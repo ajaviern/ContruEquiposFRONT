@@ -1,0 +1,54 @@
+#forms {
+    .header{
+        position: relative;
+        background-image: url('/assets/images/backgrounds/fondoLogin.jpg');
+        background-size: 100% auto;
+        background-position: 0 50%;
+        background-repeat: no-repeat;
+
+        .title{
+
+        }
+    }
+
+    .content {
+
+        .form-wrapper {
+
+        }
+
+        .form-data-wrapper {
+            margin-left: 16px;
+
+            .json-data-wrapper {
+                overflow: hidden;
+
+                pre {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
+
+.izquierdo{
+    float:left;
+    height:100%;
+    width:50%;
+}
+
+.derecho{
+    float:right;
+    height:100%;
+    width:50%;
+}
+
+.creacion{
+    border: 2px solid black;
+    border-radius: 20px;
+    color: blue;
+}
+
+.centro{
+    text-align: center;
+}

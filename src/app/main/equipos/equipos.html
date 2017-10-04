@@ -1,0 +1,223 @@
+<div class="contenedor">
+
+    <div id="forms" class="page-layout simple fullwidth doc-page" layout="column">
+
+        <!-- HEADER -->
+        <div class="header md-accent-bg" layout="row" layout-align="space-between">
+            <div layout="column" layout-align="space-between">
+                <div class="title" translate="EQUIPOS.TITLE">Ingreso de Equipos</div>
+            </div>
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT -->
+        <div class="content" layout="column">
+
+            <div class="md-title"></div>
+
+            <!--<div class="mv-24"></div> -->
+
+            <!-- BASIC FORM -->
+
+            <div class="row">
+                <!--
+                div
+                -->
+                <div class="form-wrapper md-whiteframe-1dp " >
+
+                    <div class="form-wrapper md-whiteframe-1dp ">
+                        <form name="basicForm" class="md-inline-form" novalidate>
+
+                            <div class="form-title">Categorias</div>
+                            <div class="pb-16">
+                                Registrar Nueva Categoria..
+                            </div>
+
+                            <div >
+                                <md-input-container flex>
+                                    <input type="text" name="categoria" ng-model="vm.categoria.categoria" placeholder="Categoria"
+                                           translate-attr-placeholder="CATEGORIA" >
+                                </md-input-container>
+
+                                <md-button type="submit" class="md-raised md-accent" aria-label="Submit"  ng-click="vm.createCategoriaEquipo()">
+                                    Crear
+                                </md-button>
+                            </div>
+                        </form>
+
+                        <!-- TABLE
+                        <div class="form-wrapper md-whiteframe-1dp " >
+                            <!-- TABLE
+                            <div class="content" ng-cloak="">
+
+                                <table class="dataTable row-border hover" datatable="ng" >
+                                    <thead>
+                                    <tr>
+                                        <th class="secondary-text">
+                                            <div class="table-header">
+                                                <span class="column-title">Id</span>
+                                            </div>
+                                        </th>
+                                        <th class="secondary-text">
+                                            <div class="table-header">
+                                                <span class="column-title">Nombre</span>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="item in vm.categorias" > <!--El ng-repeat es como un for (Y)-
+                                        <td ng-click="openEquipoDialog($event, item)">{{item.id}}</td>
+                                        <td ng-click="openEquipoDialog($event, item)">{{item.categoria}}</td>
+                                        <td>
+
+                                            <i class="icon-close-circle-outline" ng-click="vm.EliminarCategoriaEquipos(item.id)"></i>
+
+                                        </td>
+                                    </tr>
+
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            TABLE
+                        -->
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-wrapper md-whiteframe-1dp" >
+                    <div class="form-wrapper md-whiteframe-1dp ">
+
+                        <form name="basicForm" class="md-inline-form" novalidate>
+
+                            <div class="form-title" translate="EQUIPOS.SUBTITLE">Ingresar Equipos/Servicios</div>
+                            <div class="pb-16">
+                                A continuación ingrese los equipos con su respectiva información
+                            </div>
+
+                            <div layout="column" layout-gt-sm="row">
+                                <md-input-container flex>
+                                    <label>Descripción</label>
+                                    <textarea ng-model="vm.equipo.descripcion" md-maxlength="150" max-rows="5"></textarea>
+                                </md-input-container>
+                            </div>
+
+                            <div layout="column" layout-gt-xs="row">
+                                <md-input-container flex>
+                                    <input type="text" name="modelo" ng-model="vm.equipo.modelo" placeholder="Modelo"
+                                           translate-attr-placeholder="EQUIPOS.MODELO" required>
+                                    <div ng-messages="basicForm.modelo.$error"
+                                         role="alert">
+                                        <div ng-message="required">
+                                            <span translate="EQUIPOS.ERRORS.MODELO_REQUIRED">El campo modelo es necesario</span>
+                                        </div>
+                                    </div>
+                                </md-input-container>
+                            </div>
+
+
+                            <div layout="row">
+                                <md-input-container>
+                                    <label>Items</label>
+                                    <md-select ng-model="vm.equipo.categoria" md-selected-text="">
+                                        <md-optgroup label="Seleccione Categoria">
+                                            <md-option ng-value="item.id" ng-repeat="item in vm.categorias"> {{item.categoria}}</md-option>
+                                        </md-optgroup>
+                                    </md-select>
+                                </md-input-container>
+                            </div>
+
+
+
+                            <div class="form-wrapper md-whiteframe-1dp ">
+                                <!-- TABLE -->
+                                <div class="content" ng-cloak="">
+
+                                    <div>
+                                        <div  class="white-bg md-whiteframe-4dp">
+                                            <table class="dataTable row-border hover" datatable="ng" responsive-table="responsive">
+                                                <thead>
+                                                <tr>
+                                                    <th class="secondary-text">
+                                                        <div class="table-header">
+                                                            <span class="column-title">Id</span>
+                                                        </div>
+                                                    </th>
+                                                    <th class="secondary-text">
+                                                        <div class="table-header">
+                                                            <span class="column-title">Descripcion</span>
+                                                        </div>
+                                                    </th>
+                                                    <th class="secondary-text">
+                                                        <div class="table-header">
+                                                            <span class="column-title">Modelo</span>
+                                                        </div>
+                                                    </th>
+                                                    <th class="secondary-text">
+                                                        <div class="table-header">
+                                                            <span class="column-title">Categoria</span>
+                                                        </div>
+                                                    </th>
+                                                    <th class="secondary-text">
+                                                        <div class="table-header">
+                                                            <span class="column-title">Opciones</span>
+                                                        </div>
+                                                    </th>
+                                                </tr>
+                                                </thead>
+
+
+                                                <tbody>
+                                                <tr ng-repeat="item in vm.equipos" > <!--El ng-repeat es como un for (Y)-->
+                                                    <td ng-click="openEquipoDialog($event, item)">{{item.id}}</td>
+                                                    <td ng-click="openEquipoDialog($event, item)">{{item.descripcion}}</td>
+                                                    <td ng-click="openEquipoDialog($event, item)">{{item.modelo }}</td>
+                                                    <td ng-click="openEquipoDialog($event, item)">{{item.nombrecategoria }}</td>
+                                                    <td>
+                                                        <div layout="row" >
+                                                            <md-button type="submit" ng-if="!nuevoEquipo" ng-click="vm.EliminarEquipos(item.id)" class="send-button md-accent md-raised">
+                                                                Eliminar
+                                                            </md-button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /TABLE  -->
+                            </div>
+
+                            <md-button type="submit" class="md-raised md-accent" aria-label="Submit" ng-disabled="basicForm.$invalid || basicForm.$pristine" ng-click="vm.createEquipo()">
+                                Guardar
+                            </md-button>
+
+
+
+                        </form>
+
+                    </div>
+                </div>
+
+                <!--
+                div
+                -->
+            </div>
+            <!-- / BASIC FORM -->
+        </div>
+        <!-- / CONTENT -->
+
+    </div>
+
+</div>
+

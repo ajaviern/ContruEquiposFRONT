@@ -1,0 +1,81 @@
+<!-- DIALOG -->
+<md-dialog class="contact-dialog" aria-label="New Task">
+
+    <form name="UsuarioForm" class="md-inline-form" novalidate>
+
+
+
+        <md-dialog-content ms-scroll>
+
+
+
+            <div layout="row">
+                <md-input-container class="md-icon-float md-block" flex="">
+                    <label>Nombres</label>
+                    <md-icon md-font-icon="icon-account"></md-icon>
+                    <input ng-model="user.name" type="text" ng-required md-autofocus required md-no-asterisk name="name">
+                    <div ng-messages="UsuarioForm.name.$error" role="alert">
+                        <div ng-message="required">
+                            <span>Por lo menos el primer nombre es Obligatorio.</span>
+                        </div>
+                    </div>
+                </md-input-container>
+
+
+
+                <md-input-container class="md-icon-float md-block" flex="">
+                    <label>Apellidos</label>
+                    <md-icon md-font-icon="icon-account"></md-icon>
+                    <input ng-model="user.apellido" type="text" required md-no-asterisk name="apellido">
+                    <div ng-messages="UsuarioForm.tipo.$error" role="alert">
+                        <div ng-message="required">
+                            <span>Los apellidos son obligatorios.</span>
+                        </div>
+                    </div>
+                </md-input-container>
+            </div>
+
+
+            <md-input-container class="md-icon-float md-block" flex="">
+                    <label>Telefono</label>
+                    <md-icon md-font-icon="icon-clipboard-text"></md-icon>
+                    <input ng-model="user.telefono" type="text" required md-no-asterisk name="telefono">
+                    <div ng-messages="UsuarioForm.telefono.$error" role="alert">
+                        <div ng-message="required">
+                            <span>Telefono obligatorio.</span>
+                        </div>
+                    </div>
+                </md-input-container>
+
+                <div layout="row">
+                    <md-input-container>
+                        <label>Rol</label>
+                        <md-select ng-model="user.rol" md-selected-text="getSelectedText()">
+                            <md-optgroup label="rol">
+                                <md-option ng-value="item" ng-repeat="item in roles"> {{item}}</md-option>
+                            </md-optgroup>
+                        </md-select>
+                    </md-input-container>
+                </div>
+
+            <div layout="row" layout-align="center">
+                <md-button type="submit" ng-if="!nuevoEquipo" ng-click="ActualizarUsuarios()"
+                           class="send-button md-accent md-raised">
+                    Actualizar
+                </md-button>
+            </div>
+            <div layout="row" layout-align="center">
+                <md-button type="submit" ng-if="!nuevoEquipo" ng-click="closeDialog()"
+                           class="send-button md-accent md-raised">
+                    Cancelar
+                </md-button>
+            </div>
+
+        </md-dialog-content>
+
+
+
+    </form>
+
+</md-dialog>
+<!-- / DIALOG -->

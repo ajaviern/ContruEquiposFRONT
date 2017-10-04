@@ -1,0 +1,16 @@
+{
+    "INDEX": {
+        "TITLE": "CONSTRUEQUIPOS JE",
+        "MISION": "Mision",
+        "VISION": "Vision",
+        "REMEMBER_ME": "No cerrar sesión",
+        "FORGOT_PASSWORD": "¿Recordar contraseña?",
+        "LOG_IN": "Ingresar",
+        "CREATE_ACCOUNT": "Crea una cuenta",
+        "ERRORS": {
+            "EMAIL_REQUIRED": "El campo correo es necesario",
+            "EMAIL_MUST_VALID": "El correo debe ser una dirección de correo electrónico válida",
+            "PASSWORD_REQUIRED": "El campo contraseña es necesario"
+        }
+    }
+}

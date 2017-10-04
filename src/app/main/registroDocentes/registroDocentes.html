@@ -1,0 +1,106 @@
+<div id="forms" class="page-layout simple fullwidth doc-page" layout="column">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="title" translate="REGISTRODOCENTES.TITLE">Ingreso de Equipos</div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content" layout="column">
+
+        <div class="md-title"></div>
+
+        <!--<div class="mv-24"></div> -->
+
+        <!-- BASIC FORM -->
+        <div class="form-wrapper md-whiteframe-1dp" flex="60">
+
+            <form name="basicForm" class="md-inline-form" novalidate>
+
+                <div class="form-title" translate="REGISTRODOCENTES.SUBTITLE">Ingresar docentes</div>
+                <div class="pb-16" translate="REGISTRODOCENTES.LEGEND">
+                    A continuación ingrese docentes con su respectiva información
+                </div>
+
+                <div layout="column" layout-gt-sm="row">
+                    <md-input-container flex>
+                        <input type="text" name="nombres" ng-model="vm.credenciales.Nombre"
+                               placeholder="Nombres" translate-attr-placeholder="REGISTRODOCENTES.FIRSTNAME"
+                               required>
+                        <div ng-messages="basicForm.nombres.$error" role="alert">
+                            <div ng-message="required">
+                                <span translate="REGISTRODOCENTES.ERRORS.FIRSTNAME_REQUIRED">El campo nombres es necesario</span>
+                            </div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container flex>
+                        <input type="text" name="apellidos" ng-model="vm.credenciales.Apellidos"
+                               placeholder="Apellidos" translate-attr-placeholder="REGISTRODOCENTES.LASTNAME"
+                               required>
+                        <div ng-messages="basicForm.apellidos.$error" role="alert">
+                            <div ng-message="required">
+                                <span translate="REGISTRODOCENTES.ERRORS.LASTNAME_REQUIRED">El campo apellidos es necesario</span>
+                            </div>
+                        </div>
+                    </md-input-container>
+                </div>
+
+                <div layout="column" layout-gt-xs="row">
+                    <md-input-container flex>
+                        <input type="number" name="telefono" ng-model="vm.credenciales.Telefono" placeholder="Telefono"
+                               translate-attr-placeholder="REGISTRODOCENTES.TELEFONO" required>
+                        <div ng-messages="basicForm.telefono.$error"
+                             role="alert">
+                            <div ng-message="required">
+                                <span translate="REGISTRODOCENTES.ERRORS.TELEFONO_REQUIRED">El campo telefono es necesario</span>
+                            </div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container flex>
+                        <input type="email" name="email" ng-model="vm.credenciales.Correo" placeholder="Email"
+                               translate
+                               ng-pattern="/^.+@.+\..+$/" required>
+                        <div ng-messages="basicForm.email.$error" role="alert" multiple>
+                            <div ng-message="required">
+                                <span translate="REGISTRODOCENTES.ERRORS.EMAIL_REQUIRED">El campo correo es necesario</span>
+                            </div>
+                            <div ng-message="pattern">
+                                <span translate="REGISTRODOCENTES.ERRORS.EMAIL_MUST_VALID">El correo debe ser una dirección de correo electrónico válida</span>
+                            </div>
+                        </div>
+                    </md-input-container>
+                </div>
+
+                <div layout="column" layout-gt-xs="row">
+                    <md-input-container class="md-block" md-no-float>
+                        <input type="number" name="horas" ng-model="vm.credenciales.HorasAsignadas" placeholder="Horas Asignadas"
+                               translate-attr-placeholder="REGISTRODOCENTES.HOURS" required>
+                        <div ng-messages="basicForm.telefono.$error"
+                             role="alert">
+                            <div ng-message="required">
+                                <span translate="REGISTRODOCENTES.ERRORS.HOURS_REQUIRED">El campo horas es necesario</span>
+                            </div>
+                        </div>
+                    </md-input-container>
+
+                </div>
+
+                <md-button type="submit" class="md-raised md-accent" aria-label="Submit"
+                           ng-disabled="basicForm.$invalid || basicForm.$pristine" ng-click="vm.createDocente()">
+                    Ingresar
+                </md-button>
+            </form>
+
+        </div>
+        <!-- / BASIC FORM -->
+    </div>
+    <!-- / CONTENT -->
+
+
+
+</div>

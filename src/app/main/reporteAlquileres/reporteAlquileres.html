@@ -1,0 +1,99 @@
+<div id="forms" class="page-layout simple fullwidth doc-page" layout="column">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between" style="height: 100px; min-height: 100px; max-height: 100px;">
+        <div layout="column" layout-align="space-between">
+            <div class="title" translate="REPORTEALQUILERES.TITLE">Consultar equipos</div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+
+    <!-- BASIC FORM -->
+    <div class="form-wrapper md-whiteframe-1dp" >
+
+        <form name="basicForm" class="md-inline-form" novalidate>
+
+            <div class="form-title" translate="REPORTEALQUILERES.SUBTITLE">Consulta Alquileres</div>
+            <div class="pb-16">
+               Elije un rango de fechas
+            </div>
+
+
+
+
+
+            <div layout="column" layout-gt-xs="row">
+                <md-input-container flex>
+                    <label translate="REPORTEALQUILERES.FECHAINI">Fecha Inicial</label>
+                    <md-datepicker ng-model="vm.credenciales.fechaInicial"></md-datepicker>
+                </md-input-container>
+                <md-input-container flex>
+                    <label translate="REPORTEALQUILERES.FECHAFINAL">Fecha final</label>
+                    <md-datepicker ng-model="vm.credenciales.fechaFinal"></md-datepicker>
+                </md-input-container>
+            </div>
+
+            <md-button type="submit" class="md-raised md-accent" aria-label="Submit"
+                       ng-disabled="basicForm.$invalid || basicForm.$pristine" ng-click="vm.getAlquileres()">
+                Ingresar
+            </md-button>
+        </form>
+
+    </div>
+    <!-- / BASIC FORM -->
+
+    <div class="content" ng-cloak="">
+
+        <div>
+            <div  class="white-bg md-whiteframe-4dp">
+                <table class="dataTable row-border hover" datatable="ng" >
+                    <thead>
+                    <tr>
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Id</span>
+                            </div>
+                        </th>
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Cliente</span>
+                            </div>
+                        </th>
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Telefono</span>
+                            </div>
+                        </th>
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Direccion</span>
+                            </div>
+                        </th>
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Fecha Inicial</span>
+                            </div>
+                        </th>
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Fecha Final</span>
+                            </div>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in vm.Alquileres">
+                        <td>{{ item.alquilerId}}</td>
+                        <td>{{item.nombreCliente }}</td>
+                        <td>{{item.telefono }}</td>
+                        <td>{{item.direccion }}</td>
+                        <td>{{item.fechaInicial }}</td>
+                        <td>{{item.fechaFinal }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

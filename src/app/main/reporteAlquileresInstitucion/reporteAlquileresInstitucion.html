@@ -1,0 +1,110 @@
+<div id="forms" class="page-layout simple fullwidth doc-page" layout="column">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between" style="height: 100px; min-height: 100px; max-height: 100px;">
+        <div layout="column" layout-align="space-between">
+            <div class="title" translate="REPORTEALQUILERESINSTITUCION.TITLE">Consultar equipos</div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+
+    <!-- BASIC FORM -->
+    <div class="form-wrapper md-whiteframe-1dp" >
+
+        <form name="basicForm" class="md-inline-form" novalidate>
+
+            <div class="form-title" translate="REPORTEALQUILERESINSTITUCION.SUBTITLE">Consulta Alquileres</div>
+            <div class="pb-16">
+                Elije un rango de fechas
+            </div>
+
+
+
+
+
+            <div layout="column" layout-gt-xs="row">
+                <md-input-container flex>
+                    <label translate="REPORTEALQUILERESINSTITUCION.FECHAINI">Fecha Inicial</label>
+                    <md-datepicker ng-model="vm.credenciales.fechaInicial"></md-datepicker>
+                </md-input-container>
+                <md-input-container flex>
+                    <label translate="REPORTEALQUILERESINSTITUCION.FECHAFINAL">Fecha final</label>
+                    <md-datepicker ng-model="vm.credenciales.fechaFinal"></md-datepicker>
+                </md-input-container>
+            </div>
+
+            <md-button type="submit" class="md-raised md-accent" aria-label="Submit"
+                       ng-disabled="basicForm.$invalid || basicForm.$pristine" ng-click="vm.getAlquileres()">
+                Ingresar
+            </md-button>
+        </form>
+
+    </div>
+    <!-- / BASIC FORM -->
+
+    <div class="content" ng-cloak="">
+
+        <div>
+            <div  class="white-bg md-whiteframe-4dp">
+                <table class="dataTable row-border hover" datatable="ng" >
+                    <thead>
+                    <tr>
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Id</span>
+                            </div>
+                        </th>
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Salon</span>
+                            </div>
+                        </th>
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Docente</span>
+                            </div>
+                        </th>
+
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Fecha Inicial</span>
+                            </div>
+                        </th>
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Fecha Final</span>
+                            </div>
+                        </th>
+
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Institucion</span>
+                            </div>
+                        </th>
+
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Descripcion</span>
+                            </div>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in vm.Alquileres">
+                        <td>{{ item.alquilerInstitucionId}}</td>
+                        <td>{{item.salon }}</td>
+                        <td>{{item.nombreDocente }}</td>
+
+                        <td>{{item.fechaInicial }}</td>
+                        <td>{{item.fechaFinal }}</td>
+                        <td>{{item.institucion }}</td>
+
+                        <td>{{item.descripcion }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

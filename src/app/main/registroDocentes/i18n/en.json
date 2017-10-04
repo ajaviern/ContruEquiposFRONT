@@ -1,0 +1,20 @@
+{
+    "REGISTRODOCENTES": {
+        "TITLE": "Ingreso de docentes",
+        "SUBTITLE": "Ingresar docentes",
+        "LEGEND": "A continuación ingrese docentes con su respectiva información",
+        "FIRSTNAME": "Nombres",
+        "LASTNAME": "Apellidos",
+        "TELEFONO": "Teléfono",
+        "EMAIL": "Correo",
+        "HOURS": "Horas asignadas",
+        "ERRORS": {
+            "FIRSTNAME_REQUIRED": "El campo nombres es necesario",
+            "LASTNAME_REQUIRED": "El campo apellidos es necesario",
+            "TELEFONO_REQUIRED": "El campo teléfono es necesario",
+            "EMAIL_REQUIRED": "El campo correo es necesario",
+            "EMAIL_MUST_VALID": "El correo debe ser una dirección de correo electrónico válida",
+            "HOURS_REQUIRED": "El campo horas es necesario"
+        }
+    }
+}

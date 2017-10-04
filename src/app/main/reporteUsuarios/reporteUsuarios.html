@@ -1,0 +1,103 @@
+<div id="forms" class="page-layout simple fullwidth doc-page" layout="column">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between" style="height: 100px; min-height: 100px; max-height: 100px;">
+        <div layout="column" layout-align="space-between">
+            <div class="title" translate="REPORTEEQUIPO.TITLE">Consultar Usuarios</div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content" layout="column">
+
+        <div class="md-title"></div>
+
+        <!--<div class="mv-24"></div> -->
+
+        <!-- BASIC FORM -->
+        <div class="form-wrapper md-whiteframe-1dp" flex="60">
+
+            <form name="basicForm" class="md-inline-form" novalidate>
+
+                <div class="form-title" translate="REPORTEEQUIPO.SUBTITLE">Editar Usuarios</div>
+                <div class="pb-16">
+                    A continuación seleccione el usuario a editar
+                </div>
+
+                <!--
+                <div layout="column" layout-gt-sm="row">
+                    <md-input-container flex>
+                        <label translate="REPORTEEQUIPO.EQUIPOS">Equipos</label>
+                        <md-select ng-model="vm.Reporte.equiposId">
+                            <md-option ng-repeat="item in vm.Equipo" ng-value="item.equiposId">
+                                {{item.tipo}} {{item.marca}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+
+                <md-button type="submit" class="md-raised md-accent" aria-label="Submit"
+                           ng-disabled="basicForm.$invalid || basicForm.$pristine" ng-click="vm.getEquipo()">
+                    Buscar
+                </md-button>
+                -->
+
+                <!-- TABLE -->
+                <div class="content" ng-cloak="">
+
+                    <div>
+                        <div  class="white-bg md-whiteframe-4dp">
+                            <table class="dataTable row-border hover" datatable="ng" >
+                                <thead>
+                                <tr>
+                                    <th class="secondary-text">
+                                        <div class="table-header">
+                                            <span class="column-title">Nombres</span>
+                                        </div>
+                                    </th>
+                                    <th class="secondary-text">
+                                        <div class="table-header">
+                                            <span class="column-title">Apellidos</span>
+                                        </div>
+                                    </th>
+                                    <th class="secondary-text">
+                                        <div class="table-header">
+                                            <span class="column-title">Email</span>
+                                        </div>
+                                    </th>
+                                    <th class="secondary-text">
+                                        <div class="table-header">
+                                            <span class="column-title">Telefono</span>
+                                        </div>
+                                    </th>
+                                    <th class="secondary-text">
+                                        <div class="table-header">
+                                            <span class="column-title">Rol</span>
+                                        </div>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="item in vm.Usuarios" ng-click="openEquipoDialog($event, item)">
+                                    <td>{{item.name}}</td>
+                                    <td>{{item.apellido }}</td>
+                                    <td>{{item.email }}</td>
+                                    <td>{{item.telefono }}</td>
+                                    <td>{{item.rol }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- /TABLE  -->
+
+            </form>
+
+        </div>
+        <!-- / BASIC FORM -->
+    </div>
+    <!-- / CONTENT -->
+
+</div>

@@ -1,0 +1,16 @@
+{
+  "PRODUCTO": {
+    "TITLE": "Modulo de Productos",
+    "SUBTITLE": "Ingresar Equipos/Servicios",
+    "TIPO": "Categoria",
+    "MARCA": "Marca",
+    "MODELO": "Modelo",
+    "DATE": "Fecha de Compra",
+    "SERIAL": "Serial",
+    "DESCRIPCION": "Crea una cuenta",
+    "ERRORS": {
+      "MARCA_REQUIRED": "El campo marca es necesario",
+      "MODELO_REQUIRED": "El campo modelo es necesario"
+    }
+  }
+}

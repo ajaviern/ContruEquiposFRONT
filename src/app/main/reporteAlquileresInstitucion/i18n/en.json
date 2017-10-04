@@ -1,0 +1,9 @@
+{
+    "REPORTEALQUILERESINSTITUCION": {
+        "TITLE": "Consultar Aqluilers Institucion",
+        "SUBTITLE": "Buscar Alquileres",
+        "DOCENTES": "Docentes",
+        "FECHAINI":"Fecha Inicial",
+        "FECHAFINAL":"Fecha final"
+    }
+}

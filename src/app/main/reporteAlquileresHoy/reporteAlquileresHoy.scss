@@ -1,0 +1,32 @@
+#forms {
+    .header{
+        position: relative;
+        background-image: url('/assets/images/backgrounds/fondoLogin.jpg');
+        background-size: 100% auto;
+        background-position: 0 50%;
+        background-repeat: no-repeat;
+
+        .title{
+
+        }
+    }
+
+    .content {
+
+        .form-wrapper {
+
+        }
+
+        .form-data-wrapper {
+            margin-left: 16px;
+
+            .json-data-wrapper {
+                overflow: hidden;
+
+                pre {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}

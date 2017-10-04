@@ -1,0 +1,101 @@
+<div id="register" class="flex-scrollable" layout="column" ms-scroll>
+    <div id="register-form-wrapper" layout="column" layout-align="center center">
+        <div id="register-form" class="md-whiteframe-8dp">
+            <div class="logo md-accent-bg">
+                <span>E</span>
+            </div>
+
+            <div class="title">Registrar Cliente</div>
+
+            <form name="registerForm" novalidate>
+                <md-input-container class="md-block" md-no-float>
+                    <input name="name" ng-model="vm.credenciales.name" placeholder="Nombres"
+                           translate translate-attr-placeholder="REGISTRO.NAME"
+                           required>
+                    <div ng-messages="registerForm.username.$error" role="alert">
+                        <div ng-message="required">
+                            <span translate="REGISTRO.ERRORS.NAME_REQUIRED">El campo es necesario</span>
+                        </div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block" md-no-float>
+                    <input name="apellido" ng-model="vm.credenciales.apellido" placeholder="Apellidos"
+                           translate translate-attr-placeholder="REGISTRO.APELLIDO"
+                           required>
+                    <div ng-messages="registerForm.username.$error" role="alert">
+                        <div ng-message="required">
+                            <span translate="REGISTRO.ERRORS.APELLIDO_REQUIRED">El campo es necesario</span>
+                        </div>
+                    </div>
+                </md-input-container>
+
+
+                <md-input-container class="md-block" md-no-float>
+                    <input type="email" name="email" ng-model="vm.credenciales.email" placeholder="Email"
+                           translate translate-attr-placeholder="REGISTRO.EMAIL"
+                           ng-pattern="/^.+@.+\..+$/" required>
+                    <div ng-messages="registerForm.email.$error" role="alert" multiple>
+                        <div ng-message="required">
+                            <span translate="REGISTRO.ERRORS.EMAIL_REQUIRED">El campo correo es necesario</span>
+                        </div>
+                        <div ng-message="pattern">
+                            <span translate="REGISTRO.ERRORS.EMAIL_MUST_VALID">El correo debe ser una dirección de correo electrónico válida</span>
+                        </div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block" md-no-float>
+                    <input type="password" name="password" ng-model="vm.credenciales.password" placeholder="Password"
+                           translate translate-attr-placeholder="REGISTRO.PASSWORD"
+                           required>
+                    <div ng-messages="registerForm.password.$error" role="alert">
+                        <div ng-message="required">
+                            <span translate="REGISTRO.ERRORS.PASSWORD_REQUIRED">El campo contraseña es necesario</span>
+                        </div>
+                    </div>
+                </md-input-container>
+
+
+                <md-input-container class="md-block" md-no-float>
+                    <input name="telefono" ng-model="vm.credenciales.telefono" placeholder="Telefono"
+                           translate translate-attr-placeholder="REGISTRO.TELEFONO"
+                           required>
+                    <div ng-messages="registerForm.username.$error" role="alert">
+                        <div ng-message="required">
+                            <span translate="REGISTRO.ERRORS.TELEFONO_REQUIRED">El campo apellidos es necesario</span>
+                        </div>
+                    </div>
+                </md-input-container>
+
+
+               <!-- <md-input-container class="md-block" md-no-float>
+                    <input name="role" ng-model="vm.credenciales.Role" readonly
+                           translate translate-attr-placeholder="REGISTRO.ROLE"
+                           required>
+
+                </md-input-container> -->
+
+                <div class="terms" layout="row" layout-align="center center">
+                    <md-checkbox name="terms" ng-model="data.cb1" aria-label="I read and accept" required></md-checkbox>
+                    <div layout="row" layout-sm="column" layout-align="start center">
+                        <span translate="REGISTRO.READ_ACCEPT">Leo y Acepto</span>
+                        <a href="#" class="md-accent-color" translate="REGISTRO.TERMS_COND">Terminos y Condiciones</a>
+                    </div>
+                </div>
+
+                <md-button type="submit" class="md-raised md-accent submit-button" aria-label="CREATE MY ACCOUNT"
+                           ng-disabled="registerForm.$invalid || registerForm.$pristine"
+                           translate="REGISTRO.CREATE_ACCOUNT"
+                           translate-attr-aria-label="REGISTRO.CREATE_ACCOUNT" ng-click="vm.createUser()" ng-keypress="vm.createUser()">
+                    REGISTRAR
+                </md-button>
+            </form>
+
+            <div class="login" layout="row" layout-xs="column" layout-align="center center">
+                <span class="text" translate="REGISTRO.ALREADY_HAVE">¿Ya tienes una cuenta?</span>
+                <a class="link" ui-sref="app.login" translate="REGISTRO.LOGIN">Ingresar</a>
+            </div>
+        </div>
+    </div>
+</div>

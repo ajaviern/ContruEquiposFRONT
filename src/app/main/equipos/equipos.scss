@@ -1,0 +1,69 @@
+#forms {
+    .header{
+        position: relative;
+        background-image: url('/assets/images/backgrounds/fondoLogin.jpg');
+        background-size: 100% auto;
+        background-position: 0 50%;
+        background-repeat: no-repeat;
+
+        .title{
+
+        }
+    }
+
+    .content {
+
+        .form-wrapper {
+
+        }
+
+        .form-data-wrapper {
+            margin-left: 16px;
+
+            .json-data-wrapper {
+                overflow: hidden;
+
+                pre {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
+
+.izquierdo{
+    float:left;
+    height:100%;
+    width:50%;
+}
+
+.derecho{
+    float:right;
+    height:100%;
+    width:50%;
+}
+.prod{
+    text-align: center;
+}
+.contenedor {
+    width: 100%;
+    //max-width: 1000px;
+    //margin:0 auto;
+}
+
+#ResponsiveTable{
+    width: 80%;
+    border-collapse: collapse;
+}
+
+#ResponsiveTable td:before{
+    position:absolute;
+    top:5px;
+    letf:5px;
+    width: 40%;
+    padding-right:10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: bold;
+    content: attr(tableHeadData);
+}
