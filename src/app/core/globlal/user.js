@@ -32,6 +32,12 @@ var user = {
     _getIdRol:function () {
         return localStorage.idRol;
     },
+  _setTelefono: function (telefono) {
+    localStorage.setItem('telefono', telefono);
+  },
+  _getTelefono:function () {
+    return localStorage.telefono;
+  },
     _setNombreRol: function (nombreRol) {
         localStorage.setItem('nombreRol', nombreRol)
     },

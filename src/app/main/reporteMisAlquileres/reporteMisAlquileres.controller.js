@@ -8,11 +8,11 @@
 (function () {
     'use strict';
 
-    angular.module('app.reporteAlquileres')
-        .controller('ReporteAlquileresController', ReporteAlquileresController);
+    angular.module('app.reporteMisAlquileres')
+        .controller('ReporteMisAlquileresController', ReporteMisAlquileresController);
 
     /** @ngInject */
-    function ReporteAlquileresController($scope, DialogFactory, $timeout, $state, $mdDialog,AlquilerService,$document,FacturacionService ) {
+    function ReporteMisAlquileresController($scope, DialogFactory, $timeout, $state, $mdDialog,AlquilerService,$document ) {
         var vm = this;
         vm.usuarios_id =user._getIdUsuario();
         vm.credenciales = {};
@@ -24,7 +24,6 @@
 
         vm.getAlquileres=getAlquileres;
         vm.modalCreateCategoria =modalCreateDetalle;
-        vm.goFacturacion=goFacturacion;
 
         vm.Alquileres =[];
         vm.Reporte = {};
@@ -37,14 +36,9 @@
           getAlquileres();
         }
 
-        function goFacturacion(data) {
-          FacturacionService.setPedido(data);
-          $state.go('app.facturacion', {});
-        }
-
         function getAlquileres(){
         //  console.log(vm.usuarios_id)
-            var promiseGet = AlquilerService.getAlquileres();
+            var promiseGet = AlquilerService.getAlquileresUsuario(vm.usuarios_id);
             promiseGet.then(
                 function (data) {
                     var respuesta = data.data;

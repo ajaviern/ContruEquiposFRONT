@@ -33,6 +33,9 @@
            // 'app.reporteDocentes',
             'app.reporteEquipo',
             'app.reporteAlquileres',
+            'app.reporteMisAlquileres',
+            'app.facturacion',
+          //'app.reporteAlquileresUsuarios',
           //  'app.reporteAlquileresInstitucion',
           //  'app.reporteAlquileresHoy',
             'app.reporteUsuarios'

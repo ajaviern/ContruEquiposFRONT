@@ -9,14 +9,13 @@
         .factory('AlquilerService', AlquilerService);
 
     function AlquilerService($http, $q){
-        var url = "http://localhost:51466/";
+        var url = "http://localhost/ConstruEquiposBACK/public";
         var equiposServiceFactory = {};
 
         var createAlquiler = function (getData) {
             return $http({
                 method: 'POST',
-                url: url + '/api/alquiler/create',
-                headers: {'authorization': 'bearer ' + user._getToken()},
+                url: url + '/api/RegistrarAlquiler',
                 data: getData
             });
         };
@@ -30,14 +29,19 @@
             });
         };
 
-        var getAlquileres = function (getData) {
+        var getAlquileresUsuario = function ($id) {
             return $http({
-                method: 'POST',
-                url: url + '/api/alquiler/AlquileresFecha',
-                headers: {'authorization': 'bearer ' + user._getToken()},
-                data: getData
+                method: 'GET',
+                url: url + '/api/GetAllAlquileres/'+$id
             });
         };
+
+      var getAlquileres = function () {
+        return $http({
+          method: 'GET',
+          url: url + '/api/GetAllAlquileres'
+        });
+      };
 
         var getAlquileresInstitucion = function (getData) {
             return $http({
@@ -77,6 +81,7 @@
         equiposServiceFactory.createAlquiler = createAlquiler;
         equiposServiceFactory.createAlquilerInstitucion = createAlquilerInstitucion;
         equiposServiceFactory.getAlquileres = getAlquileres;
+        equiposServiceFactory.getAlquileresUsuario = getAlquileresUsuario;
         equiposServiceFactory.getAlquileresInstitucion = getAlquileresInstitucion;
         equiposServiceFactory.getAlquileresDocente = getAlquileresDocente;
         equiposServiceFactory.getAlquileresHoy = getAlquileresHoy;

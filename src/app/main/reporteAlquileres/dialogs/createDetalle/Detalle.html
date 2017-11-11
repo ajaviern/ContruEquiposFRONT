@@ -1,0 +1,42 @@
+<md-dialog class="event-form-dialog" aria-label="New Message">
+  <form name="eventForm" class="md-inline-form" novalidate>
+    <md-toolbar class="md-accent md-hue-2">
+      <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+        <span class="title">Detalle del Alquiler</span>
+        <md-button class="md-icon-button" ng-click="vm.closeDialog()" aria-label="Close dialog" translate
+                   translate-attr-aria-label="CALENDAR.CLOSE_DIALOG">
+          <md-icon md-font-icon="icon-close"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content ms-scroll>
+
+      <div class="container">
+        <div layout="row" layout-align="space-between" ng-repeat="item in vm.detalles">
+          <md-input-container class="md-block">
+            <label>Descripcion </label>
+            <input name="title" ng-model="item.descripcion" required md-autofocus disabled>
+          </md-input-container>
+          <md-input-container class="md-block">
+            <label>Cantidad </label>
+            <input name="title" ng-model="item.cantidad" required md-autofocus disabled>
+          </md-input-container>
+          <md-input-container class="md-block">
+            <label>Fecha </label>
+            <input name="title" ng-model="item.fecha" required md-autofocus disabled>
+          </md-input-container>
+          <md-input-container class="md-block">
+            <label>Subtotal </label>
+            <input name="title" ng-model="item.subtotal" required md-autofocus disabled>
+          </md-input-container>
+        </div>
+      </div>
+
+
+
+    </md-dialog-content>
+
+
+  </form>
+</md-dialog>

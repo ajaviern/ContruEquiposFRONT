@@ -26,15 +26,17 @@
             p.then(
                 function (datos) {
                     if(datos.error){
-                        alert(datos.mensaje);
+                      user.swalError(datos.mensaje);
+                       // alert(datos.mensaje);
                     }else{
                         var respuesta = datos.data;
-                        user._setNombreCompleto(respuesta.name);
+                        user._setNombreCompleto(respuesta.name+" "+respuesta.apellido);
+                        user._setTelefono(respuesta.telefono);
                         user._setIdUsuario(respuesta.id);
                         user._setNombreRol(respuesta.rol);
                         user._setEmail(respuesta.email);
-                        user.swalSuccess("eureka");
-                        alert(datos.mensaje);
+                        user.swalSuccess("Bienvenido A ConstruEquipos");
+                        //alert(datos.mensaje);
 
                         $state.go('app.index', {});
                     }

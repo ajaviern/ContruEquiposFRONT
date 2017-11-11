@@ -10,212 +10,64 @@
             </div>
         </md-toolbar>
 
-        <md-dialog-content ms-scroll>
+      <md-dialog-content ms-scroll>
+        <label>Datos Personales </label>
+
+          <md-input-container class="md-block">
+            <label>Nombre </label>
+            <input name="title" ng-model="vm.usuario.nombre" required md-autofocus disabled>
+          </md-input-container>
+          <md-input-container class="md-block">
+            <label>Telefono </label>
+            <input name="title" ng-model="vm.usuario.telefono" required md-autofocus disabled>
+          </md-input-container>
+
+
+
+      </md-dialog-content>
+
+      <md-dialog-content ms-scroll>
+
+        <div class="container">
+          <div layout="row" layout-align="space-between">
+            <label>Equipos Requeridos </label>
+            <md-button class="add-event-button md-fab " ng-click="vm.nuevoEquipo()"
+                       aria-label="Add event" translate translate-attr-aria-label="CALENDAR.ADD_EVENT">
+              <md-icon md-font-icon="icon-plus"></md-icon>
+            </md-button>
+          </div>
+
+          <div layout="row" layout-align="space-between" ng-repeat="item in vm.equiposSelecciones">
             <md-input-container class="md-block">
-                <label  translate="CALENDAR.NOMBRECLIENTE" >Nombre </label>
-                <input name="title" ng-model="vm.alquiler.nombreCliente" required md-autofocus>
-                <div ng-messages="eventForm.title.$error" ng-show="eventForm.title.$touched" role="alert">
-                    <div ng-message="required">
-                        <span translate="CALENDAR.ERRORS.TITLE_REQUIRED">El nombre de contacto es requerido</span>
-                    </div>
-                </div>
+              <label>Equipo </label>
+              <md-select ng-model="item.equipos_id" md-selected-text="">
+                <md-optgroup label="Seleccione el equipo">
+                  <md-option ng-value="item.id" ng-repeat="item in vm.equipos"> {{item.descripcion}}</md-option>
+                </md-optgroup>
+              </md-select>
             </md-input-container>
-
-
-                <md-input-container class="md-block">
-                    <label translate="CALENDAR.DIRECCION" >Direccion </label>
-                    <input name="title" ng-model="vm.alquiler.Direccion" required md-autofocus>
-                    <div ng-messages="eventForm.title.$error" ng-show="eventForm.title.$touched" role="alert">
-                        <div ng-message="required">
-                            <span translate="CALENDAR.ERRORS.TITLE_REQUIRED" >Necesita una direccion</span>
-                        </div>
-                    </div>
-                </md-input-container>
-
-
-                    <md-input-container class="md-block">
-                        <label translate="CALENDAR.TELEFONO" >Telefono </label>
-                        <input type="number" name="title" ng-model="vm.alquiler.Telefono" required md-autofocus>
-                        <div ng-messages="eventForm.title.$error" ng-show="eventForm.title.$touched" role="alert">
-                            <div ng-message="required">
-                                <span translate="CALENDAR.ERRORS.TITLE_REQUIRED">Necesita un Telefono</span>
-                            </div>
-                        </div>
-                    </md-input-container>
-
-            <div layout="row" class="date-row">
-                <md-datepicker ng-model="vm.calendarEvent.start" md-placeholder="Start Date"></md-datepicker>
-
-                <md-input-container class="no-errors-spacer" flex md-no-float>
-                    <input ng-model="vm.alquiler.fechaInicial" placeholder="Start Time" translate
-                           translate-attr-placeholder="CALENDAR.START_TIME">
-                </md-input-container>
-            </div>
-
-            <div layout="row" class="date-row">
-                <md-datepicker ng-model="vm.calendarEvent.end" md-placeholder="End Date"></md-datepicker>
-
-                <md-input-container class="no-errors-spacer" flex md-no-float>
-                    <input ng-model="vm.alquiler.fechaFinal" placeholder="End Time" translate
-                           translate-attr-placeholder="CALENDAR.END_TIME">
-                </md-input-container>
-            </div>
-
-            <div layout="row">
-                <md-input-container>
-                    <label>Items</label>
-                    <md-select ng-model="vm.categorias.categoria" md-selected-text="">
-                        <md-optgroup label="Seleccione Categoria">
-                            <md-option ng-value="item" ng-repeat="item in vm.categorias"> {{item.categoria}}</md-option>
-                        </md-optgroup>
-                    </md-select>
-                </md-input-container>
-            </div>
-
-            <div class="form-wrapper md-whiteframe-1dp izquierdo">
-                <h2 class="md-title">¿Qué equipos requiere?</h2>
-                <!-- TABLE -->
-                <div class="content" ng-cloak="">
-
-                    <div>
-                        <div  class="white-bg md-whiteframe-4dp">
-                            <table class="dataTable row-border hover" datatable="ng" >
-                                <thead>
-                                <tr>
-                                    <th class="secondary-text">
-                                        <div class="table-header">
-                                            <span class="column-title">Id</span>
-                                        </div>
-                                    </th>
-                                    <th class="secondary-text">
-                                        <div class="table-header">
-                                            <span class="column-title">Descripcion</span>
-                                        </div>
-                                    </th>
-                                    <th class="secondary-text">
-                                        <div class="table-header">
-                                            <span class="column-title">Modelo</span>
-                                        </div>
-                                    </th>
-                                </tr>
-                                </thead>
-
-
-                                <tbody>
-                                <tr ng-repeat="item in vm.equipos" > <!--El ng-repeat es como un for (Y)-->
-                                    <td ng-click="openEquipoDialog($event, item)">{{item.id}}</td>
-                                    <td ng-click="openEquipoDialog($event, item)">{{item.descripcion}}</td>
-                                    <td ng-click="openEquipoDialog($event, item)">{{item.modelo }}</td>
-                                </tr>
+            <md-input-container class="md-block">
+              <label>Cantidad </label>
+              <input name="title" ng-model="item.cantidad" required md-autofocus >
+            </md-input-container>
+            <md-input-container class="md-block">
+              <label>Fecha </label>
+              <input  type="date" name="title" ng-model="item.fecha" required md-autofocus >
+            </md-input-container>
+          </div>
+        </div>
 
 
 
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <!-- /TABLE  -->
-            </div>
+      </md-dialog-content>
 
 
-            <div class="form-wrapper md-whiteframe-1dp derecho">
-                <h2 class="md-title">Equipos Escogidos</h2>
-                <!-- TABLE -->
-                <div class="content" ng-cloak="">
+      <md-dialog-actions>
+        <md-button class="save-button md-accent md-raised" ng-click="vm.createPedido()">
+          Reservar
+        </md-button>
+      </md-dialog-actions>
 
-                    <div>
-                        <div  class="white-bg md-whiteframe-4dp">
-                            <table class="dataTable row-border hover" datatable="ng" >
-                                <thead>
-                                <tr>
-                                    <th class="secondary-text">
-                                        <div class="table-header">
-                                            <span class="column-title">Id</span>
-                                        </div>
-                                    </th>
-                                    <th class="secondary-text">
-                                        <div class="table-header">
-                                            <span class="column-title">Descripcion</span>
-                                        </div>
-                                    </th>
-                                    <th class="secondary-text">
-                                        <div class="table-header">
-                                            <span class="column-title">Modelo</span>
-                                        </div>
-                                    </th>
-                                    <th class="secondary-text">
-                                        <div class="table-header">
-                                            <span class="column-title">Opciones</span>
-                                        </div>
-                                    </th>
-                                </tr>
-                                </thead>
-
-
-                                <tbody>
-                                <tr ng-repeat="item in vm." > <!--El ng-repeat es como un for (Y)-->
-                                    <td ng-click="openEquipoDialog($event, item)">{{item.id}}</td>
-                                    <td ng-click="openEquipoDialog($event, item)">{{item.descripcion}}</td>
-                                    <td ng-click="openEquipoDialog($event, item)">{{item.modelo }}</td>
-                                    <td>
-                                        <div layout="row" >
-                                            <md-button type="submit" ng-if="!nuevoEquipo" ng-click="vm.EliminarEquipos(item.id)" class="send-button md-accent md-raised">
-                                                DELL
-                                            </md-button>
-                                        </div>
-                                    </td>
-                                </tr>
-
-
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <!-- /TABLE  -->
-            </div>
-
-
-
-            <md-chips ng-model="vm.selectedVegetables" md-autocomplete-snap
-                      md-transform-chip="vm.transformChip($chip)"
-                      md-require-match="vm.autocompleteDemoRequireMatch">
-                <md-autocomplete
-                        md-selected-item="vm.selectedItem"
-                        md-search-text="vm.searchText"
-                        md-items="item in vm.querySearch(vm.searchText)"
-                        md-item-text="item.name"
-                        placeholder="Cantidad de equipos">
-                    <span md-highlight-text="vm.searchText">{{item.name}} :: {{item.texto}}</span>
-                </md-autocomplete>
-                <md-chip-template>
-        <span>
-          <strong>{{$chip.name}}</strong>
-          <em>({{$chip.type}})</em>
-        </span>
-                </md-chip-template>
-            </md-chips>
-
-
-            <md-dialog-actions layout="row" layout-align="space-between center">
-                <md-button ng-click="vm.saveEvent()" class="save-button md-accent md-raised" aria-label="SAVE"
-                           ng-disabled="eventForm.$invalid || eventForm.$pristine"
-                           translate="CALENDAR.SAVE"
-                           translate-attr-aria-label="CALENDAR.SAVE">
-                    Guardar
-                </md-button>
-
-            </md-dialog-actions>
-
-            <md-dialog-actions layout="row" layout-align="space-between center">
-                <md-button ">
-                Generar Factura
-                </md-button>
-            </md-dialog-actions>
-
-        </md-dialog-content>
 
 
     </form>

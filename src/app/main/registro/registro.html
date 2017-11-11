@@ -30,6 +30,16 @@
                     </div>
                 </md-input-container>
 
+              <md-input-container class="md-block" md-no-float>
+                <input name="apellido" ng-model="vm.credenciales.cedula" placeholder="Idefentificacion"
+                       required>
+                <div ng-messages="registerForm.username.$error" role="alert">
+                  <div ng-message="required">
+                    <span translate="REGISTRO.ERRORS.APELLIDO_REQUIRED">El campo es necesario</span>
+                  </div>
+                </div>
+              </md-input-container>
+
 
                 <md-input-container class="md-block" md-no-float>
                     <input type="email" name="email" ng-model="vm.credenciales.email" placeholder="Email"

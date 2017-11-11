@@ -20,9 +20,11 @@
         /**
          * Roles
          */
-        var R1 = "Admin";
+        var R1 = "administrador";
 
-        var R2 = "Vendedor";
+        var R2 = "usuario";
+
+        var R2 = "empleado";
 
 
 

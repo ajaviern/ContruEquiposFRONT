@@ -10,6 +10,14 @@
     {
         var vm = this;
         vm.alquiler = {};
+       vm.usuario = {};
+       vm.usuario.id = user._getIdUsuario();
+       vm.usuario.nombre = user._getNombreCompleto();
+       vm.usuario.telefono = user._getTelefono();
+       vm.equipos = [];
+
+        vm.equiposSelecciones = [];
+
 
              // Data
         vm.dialogData = dialogData;
@@ -20,6 +28,9 @@
         vm.saveEvent = saveEvent;
         vm.removeEvent = removeEvent;
         vm.closeDialog = closeDialog;
+
+        vm.nuevoEquipo =nuevoEquipo;
+        vm.createPedido =createPedido;
 
        // console.log(closeDialog);
 
@@ -36,6 +47,66 @@
         vm.autocompleteDemoRequireMatch = true;
         vm.transformChip = transformChip;
 
+
+
+      function createPedido() {
+        var datos = {};
+        datos.detalle =vm.equiposSelecciones;
+
+        for( var i in datos.detalle){
+
+          var dates = {
+            start: moment.utc(datos.detalle[i].fecha)
+          };
+          dates.start.subtract(1, 'day');
+          datos.detalle[i].fecha = dates.start.format("YYYY/MM/DD");
+
+        }
+
+        datos.usuarios_id =vm.usuario.id;
+        var p = AlquilerService.createAlquiler(datos);
+        p.then(
+          function (datos) {
+            var respuesta =datos.data;
+
+            if(respuesta.error){
+              user.swalError("Error en la reserva");
+            }else{
+              user.swalSuccess("Datos guardados correctamente");
+              closeDialog();
+            }
+          },
+          function (error) {
+            console.log(error);
+          }
+        )
+
+      }
+
+
+      function cargarTodosLosEquipos() {
+        //alert('entro');
+        var p = EquiposService.getAllEquipos();
+        p.then(
+          function (datos) {
+            var respuesta =datos.data;
+
+            if(respuesta.error){
+              DialogFactory.ShowSimpleToast(respuesta.mensaje);
+            }else{
+              vm.equipos=respuesta.data;
+            }
+          },
+          function (error) {
+            DialogFactory.ShowSimpleToast(error.error_description);
+          }
+        )
+
+      }
+        function nuevoEquipo() {
+          var equipo = {};
+          vm.equiposSelecciones.push(angular.copy(equipo));
+        }
         /**
          * Return the proper object when the append is called.
          */
@@ -156,6 +227,8 @@
          */
         function init()
         {
+          cargarTodosLosEquipos();
+          nuevoEquipo();
             // Figure out the title
             switch ( vm.dialogData.type )
             {
