@@ -32,7 +32,7 @@
             },
             data: {
                 permissions: {
-                    only: ['SuperAdmin','Admin','Invitado','Vendedor']
+                    only: ['administrador','empleado','invitado','usuario']
 
                 }
             },

@@ -23,7 +23,7 @@
                 },
                 data: {
                     permissions: {
-                        only: ['SuperAdmin','Admin']
+                        only: ['administrador']
                     }
                 }
             });
@@ -33,8 +33,8 @@
 
         // Navigation
         msNavigationServiceProvider.saveItem('reporteUsuarios', {
-            title    : 'Consulta de Usuarios',
-            icon     : 'icon-file-find',
+            title    : 'Gestion de Usuarios',
+            icon     : 'icon-human-child',
             state    : 'app.reporteUsuarios',
             weight   : 1
         });

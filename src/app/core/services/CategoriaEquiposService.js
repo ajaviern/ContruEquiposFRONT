@@ -4,7 +4,7 @@
 (function () {
     'use strict';
 
-    angular.module('app.equipos')
+    angular.module('app.reporteEquipo')
         .factory('CategoriaEquiposService', CategoriaEquiposService);
 
     function CategoriaEquiposService($http, $q){

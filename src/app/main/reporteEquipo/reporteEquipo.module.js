@@ -5,7 +5,7 @@
 (function () {
     'use strict';
 
-    angular.module('app.reporteEquipo', ['xeditable'])
+    angular.module('app.reporteEquipo', ['xeditable','datatables'])
         .config(config);
 
     /** @ngInject */
@@ -23,7 +23,7 @@
                 },
                 data: {
                     permissions: {
-                        only: ['SuperAdmin']
+                        only: ['administrador']
                     }
                 }
             });
@@ -33,8 +33,8 @@
 
         // Navigation
         msNavigationServiceProvider.saveItem('reporteEquipo', {
-            title    : 'Consulta de Equipos',
-            icon     : 'icon-file-find',
+            title    : 'Gestion de Equipos',
+            icon     : 'icon-camera-iris',
             state    : 'app.reporteEquipo',
             weight   : 1
         });

@@ -11,7 +11,7 @@
 
     /* @ngInject */
     function run($rootScope, $state, PermRoleStore, LoginService, DialogFactory) {
-        var roles = ['SuperAdmin', 'Admin', 'Invitado','Vendedor'];
+        var roles = ['administrador', 'empleado', 'invitado','usuario'];
 
         angular.forEach(roles, function (rol) {
             PermRoleStore.defineRole(rol, function (nombreRol, stateParams) {

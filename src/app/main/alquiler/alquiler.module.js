@@ -25,7 +25,7 @@
             },
             data: {
                 permissions: {
-                    only: ['Invitado','SuperAdmin','Admin']
+                    only: ['inivtado','administrador','usuario','empleado']
 
                 }
             },

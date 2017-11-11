@@ -29,7 +29,7 @@
             },
             data: {
                 permissions: {
-                    only: ['SuperAdmin','Admin']
+                    only: ['administrador','empleado']
                 }
             },
             bodyClass: 'registro'
@@ -39,13 +39,6 @@
         $translatePartialLoaderProvider.addPart('app/main/registro');
 
 
-             // Navigation
-             msNavigationServiceProvider.saveItem('registro', {
-                 title : 'Registrar usuarios',
-                 icon : 'icon-person-plus',
-                 state : 'app.registro',
-                 weight: 4
-             });
 
     }
 

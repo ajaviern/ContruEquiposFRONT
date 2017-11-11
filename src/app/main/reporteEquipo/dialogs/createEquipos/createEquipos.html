@@ -1,0 +1,67 @@
+<md-dialog class="event-form-dialog" aria-label="New Message">
+  <form name="eventForm" class="md-inline-form" novalidate>
+    <md-toolbar class="md-accent md-hue-2">
+      <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+        <span class="title">Crear Nuevo Equipo</span>
+        <md-button class="md-icon-button" ng-click="vm.closeDialog()" aria-label="Close dialog" translate
+                   translate-attr-aria-label="CALENDAR.CLOSE_DIALOG">
+          <md-icon md-font-icon="icon-close"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content ms-scroll>
+
+        <md-input-container class="md-block">
+          <label>Nombre </label>
+          <input name="title" ng-model="vm.equipo.descripcion" required md-autofocus>
+        </md-input-container>
+
+
+
+      <md-input-container class="md-block">
+        <label>Modelo </label>
+        <input name="title" ng-model="vm.equipo.modelo" required md-autofocus>
+      </md-input-container>
+
+
+      <md-input-container class="md-block">
+        <label >Cantidad </label>
+        <input type="text" name="title" ng-model="vm.equipo.cantidad" required md-autofocus>
+      </md-input-container>
+
+
+
+      <md-input-container class="md-block">
+        <label>Categoria</label>
+        <md-select ng-model="vm.equipo.categoria" md-selected-text="">
+          <md-optgroup label="Seleccione Categoria">
+            <md-option ng-value="item.id" ng-repeat="item in vm.categorias"> {{item.categoria}}</md-option>
+          </md-optgroup>
+        </md-select>
+      </md-input-container>
+
+      <md-input-container class="md-block" >
+        <label> Estado</label>
+        <md-switch ng-model="vm.equipo.estado" aria-label="Switch 1">
+        </md-switch>
+      </md-input-container>
+
+
+
+
+
+      <md-dialog-actions>
+        <md-button class="save-button md-accent md-raised">
+           Guardar
+        </md-button>
+
+      </md-dialog-actions>
+
+
+
+    </md-dialog-content>
+
+
+  </form>
+</md-dialog>

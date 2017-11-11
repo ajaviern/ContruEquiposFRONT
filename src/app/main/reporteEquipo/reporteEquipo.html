@@ -1,97 +1,108 @@
-<div id="e-commerce-products" class="page-layout carded fullwidth" layout="row">
+<div class="page-layout simple fullwidth doc-page" layout="column">
 
-    <!-- TOP BACKGROUND -->
-    <div class="top-bg md-accent-bg"></div>
-    <!-- / TOP BACKGROUND -->
 
-    <!-- CENTER -->
-    <div class="center" layout="column" flex>
 
-        <!-- CONTENT HEADER -->
-        <div class="header" layout="row" layout-align="space-between center">
-            <div class="white-fg" layout="column" layout-align="start start">
-                <div class="h1" layout="row" layout-align="start center">
-                    <md-icon md-font-icon="icon-cube-outline"></md-icon>
-                    <span>Equipos</span>
-                </div>
-                <div class="product-count secondary-text">
-                    <span >Total productos:</span>
-                    <span>{{vm.products.length}}</span>
-                </div>
+  <!-- HEADER -->
+  <div class="header md-accent-bg" layout="row" layout-align="space-between" style="height: 100px; min-height: 100px; max-height: 100px;">
+    <div layout="column" layout-align="space-between">
+      <div class="title" > Administracion de <strong>Equipos</strong> </div>
+    </div>
+    <div layout="row" layout-align="space-between">
+      <md-button class="md-raised md-primary" ng-href="{{googleUrl}}" ng-click="vm.modalCreateEquipo()" target="_blank">
+        <md-icon  md-font-icon="icon-plus"  class="s20" ></md-icon> Nuevo Equipo</md-button>
+      <md-button class="md-raised md-primary" ng-href="{{googleUrl}}" ng-click="vm.modalCreateCategoria()" target="_blank">
+        <md-icon  md-font-icon="icon-plus"  class="s20" ></md-icon> Nueva categoria</md-button>
+    </div>
+  </div>
+  <!-- / HEADER -->
+
+  <!-- HEADER -
+  <div class="header md-accent-bg" layout="row" layout-align="space-between">
+    <div layout="column" layout-align="center start">
+      <div class="breadcrumb" layout="row"  style="color:white;"layout-align="start center">
+        <md-icon md-font-icon="icon-home" class="s32" style="color:white;"></md-icon>
+        <md-icon md-font-icon="icon-chevron-right" style="color:white;" class="s32 separator"></md-icon>
+        <span class="parent" style="color:white;"><h2>Mi Historial</h2></span>
+      </div>
+      <div class="title">Todas Mis Reuniones </div>
+      <span class="parent" style="color:white;"> <h5>Historico de reuniones del usuario</h5></span>
+    </div>
+  </div>
+  <!-- / HEADER -->
+
+  <!-- CONTENT -->
+  <div class="content" layout="column">
+
+    <div class="card md-whiteframe-4dp" layout="column">
+
+      <table class="table table-responsive table-hover dataTable" datatable="ng"
+             dt-options="vm.dtOptions">
+        <thead>
+        <tr>
+          <th class="secondary-text">
+            <div class="table-header">
+              <span class="column-title">ID</span>
             </div>
-
-            <div class="search" layout="row" layout-align="start center" flex>
-                <md-icon md-font-icon="icon-magnify" class="white-text icon search-icon"></md-icon>
-                <input id="e-commerce-products-search" class="search-input" type="text" placeholder="Buscar Equipo" flex>
+          </th>
+          <th class="secondary-text">
+            <div class="table-header">
+              <span class="column-title">Descripcion</span>
             </div>
-        </div>
-        <!-- / CONTENT HEADER -->
-
-        <!-- CONTENT CARD -->
-        <div class="content-card" layout="column" flex>
-
-            <!-- CONTENT TOOLBAR -->
-
-            <!-- / CONTENT TOOLBAR -->
-
-            <!-- CONTENT -->
-            <div class="content fullpage-datatable" layout="column" flex>
-
-                <table class="dataTable row-border hover" datatable="ng"
-                       dt-options="vm.dtOptions">
-                    <thead>
-                    <tr>
-                        <th class="secondary-text">
-                            <div class="table-header">
-                                <span class="column-title">ID</span>
-                            </div>
-                        </th>
-                        <th class="secondary-text">
-                            <div class="table-header">
-                                <span class="column-title">Descripcion</span>
-                            </div>
-                        </th>
-                        <th class="secondary-text">
-                            <div class="table-header">
-                                <span class="column-title">Modelo</span>
-                            </div>
-                        </th>
-                        <th class="secondary-text">
-                            <div class="table-header">
-                                <span class="column-title">Categoria</span>
-                            </div>
-                        </th>
-                        <th class="secondary-text">
-                            <div class="table-header">
-                                <span class="column-title">Estado</span>
-                            </div>
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr ng-repeat="product in vm.products">
-                        <td>{{product.id}}</td>
-                        <td>{{product.descripcion}}</td>
-                        <td>{{product.modelo}}</td>
-                        <td>{{product.nombrecategoria}}</td>
-                        <td>
-                            <md-button class="edit-button md-icon-button" ng-click="vm.gotoProductDetail(product.id)" aria-label="Product details"
-                                       translate translate-attr-aria-label="EC.PRODUCT_DETAILS">
-                                <md-icon  ng-if="product.estado == 1 " md-font-icon="icon-check-circle"  class="s16" style="color:green;"></md-icon>
-                                <md-icon  ng-if="product.estado == 0 " md-font-icon="icon-cancel" class="s16" style="color:red;" ></md-icon>
-                            </md-button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-
+          </th>
+          <th class="secondary-text">
+            <div class="table-header">
+              <span class="column-title">Unidades</span>
             </div>
-            <!-- / CONTENT -->
+          </th>
+          <th class="secondary-text">
+            <div class="table-header">
+              <span class="column-title">Modelo</span>
+            </div>
+          </th>
+          <th class="secondary-text">
+            <div class="table-header">
+              <span class="column-title">Categoria</span>
+            </div>
+          </th>
+          <th class="secondary-text">
+            <div class="table-header">
+              <span class="column-title">Estado</span>
+            </div>
+          </th>
+          <th class="secondary-text">
+            <div class="table-header">
+              <span class="column-title">Opciones</span>
+            </div>
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="product in vm.products">
+          <td>{{product.id}}</td>
+          <td>{{product.descripcion}}</td>
+          <th>{{product.cantidad | number}}</th>
+          <td>{{product.modelo}}</td>
+          <td>{{product.nombrecategoria}}</td>
+          <td>
+              <md-icon  ng-if="product.estado == 'Activo' " md-font-icon="icon-check-circle"  class="s30" style="color:green;"></md-icon>
+              <md-icon  ng-if="product.estado == Inactivo " md-font-icon="icon-cancel" class="s30" style="color:red;" ></md-icon>
+          </td>
+          <td>
+            <md-button class="edit-button md-icon-button" ng-click="vm.showEventDetailDialog(product)" aria-label="Product details"
+                       translate translate-attr-aria-label="EC.PRODUCT_DETAILS">
+              <md-icon md-font-icon="icon-pencil" class="s30"></md-icon>
+            </md-button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
 
-        </div>
-        <!-- / CONTENT CARD -->
+
+
 
     </div>
-    <!-- / CENTER -->
+
+  </div>
+  <!-- / CONTENT -->
 
 </div>

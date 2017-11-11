@@ -1,0 +1,35 @@
+<md-dialog class="event-form-dialog" aria-label="New Message">
+  <form name="eventForm" class="md-inline-form" novalidate>
+    <md-toolbar class="md-accent md-hue-2">
+      <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+        <span class="title">Crear Nueva Categoria de Equipos</span>
+        <md-button class="md-icon-button" ng-click="vm.closeDialog()" aria-label="Close dialog" translate
+                   translate-attr-aria-label="CALENDAR.CLOSE_DIALOG">
+          <md-icon md-font-icon="icon-close"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content ms-scroll>
+
+        <md-input-container class="md-block">
+          <label>Nombre de la Categoria </label>
+          <input name="title" ng-model="vm.categoria.categoria" required md-autofocus>
+        </md-input-container>
+
+
+
+      <md-dialog-actions>
+        <md-button class="save-button md-accent md-raised">
+           Guardar
+        </md-button>
+
+      </md-dialog-actions>
+
+
+
+    </md-dialog-content>
+
+
+  </form>
+</md-dialog>

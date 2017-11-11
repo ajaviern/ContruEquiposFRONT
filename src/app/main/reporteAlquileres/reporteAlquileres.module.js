@@ -27,7 +27,7 @@
                 },
                 data: {
                     permissions: {
-                        only: ['SuperAdmin']
+                        only: ['administrador']
                     }
                 }
             });
@@ -37,8 +37,8 @@
 
         // Navigation
         msNavigationServiceProvider.saveItem('reporteAlquileres', {
-            title    : 'Consulta alquileres',
-            icon     : 'icon-file-find',
+            title    : 'Gestion de Alquileres',
+            icon     : 'icon-pin',
             state    : 'app.reporteAlquileres',
             weight   : 1
         });

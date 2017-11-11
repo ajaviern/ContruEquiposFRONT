@@ -50,6 +50,12 @@ var user = {
     _getEmail: function () {
         return localStorage.email;
     },
+  swalError: function (mensaje) {
+    swal({"confirmButtonColor": "#c9302c", "title": "Oops...", "text": mensaje, "type": "error"});
+  },
+  swalSuccess: function (mensaje) {
+    swal({"confirmButtonColor": "#1ab394", "title": "¡Buen Trabajo!", "text": mensaje, "type": "success"});
+  },
     _getUsername: function () {
         return localStorage.Username;
     },
@@ -58,4 +64,5 @@ var user = {
         localStorage.clear();
         user._setNombreRol('Invitado');
     }
+
 };

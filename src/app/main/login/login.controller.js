@@ -33,6 +33,7 @@
                         user._setIdUsuario(respuesta.id);
                         user._setNombreRol(respuesta.rol);
                         user._setEmail(respuesta.email);
+                        user.swalSuccess("eureka");
                         alert(datos.mensaje);
 
                         $state.go('app.index', {});

@@ -29,7 +29,7 @@
             },
             data: {
                 permissions: {
-                    only: ['SuperAdmin','Admin']
+                    only: ['administrador','empleado']
                 }
             },
             bodyClass: 'registroCliente'
