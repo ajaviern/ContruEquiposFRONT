@@ -78,7 +78,7 @@
                                      translate translate-attr-aria-label="EC.PRODUCT_DETAILS">
                           <md-icon md-font-icon="icon-eye" class="s30" style="color:cornflowerblue;"></md-icon>
                           </md-button>
-                          <md-button class="edit-button md-icon-button" ng-click="vm.goFacturacion(item)" text="Facturar" >
+                          <md-button  ng-if="item.estado=='pendiente'" class="edit-button md-icon-button" ng-click="vm.goFacturacion(item)" text="Facturar" >
                             <md-icon md-font-icon="icon-cash-100" class="s30" style="color:green;"></md-icon>
                           </md-button>
                         </td>

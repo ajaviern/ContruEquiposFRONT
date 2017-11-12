@@ -6,7 +6,7 @@
         .controller('CreateEquipoController', CreateEquipoController);
 
     /** @ngInject */
-    function CreateEquipoController($mdDialog, CategoriaEquiposService,parentController)
+    function CreateEquipoController($mdDialog, CategoriaEquiposService,parentController,EquiposService)
     {
         var vm = this;
 
@@ -21,6 +21,7 @@
         vm.editEvent = editEvent;
         vm.closeDialog = closeDialog;
         vm.CargarTodasLasCategorias =CargarTodasLasCategorias;
+        vm.createEquipo=createEquipo;
 
         __init();
 
@@ -43,10 +44,17 @@
 
       function createEquipo (equipo) {
           bandera=true;
-        var p = CategoriaEquiposService.getAllCategoriaEquipos();
+        var p = EquiposService.createEquipo(equipo);
         p.then(
           function (datos) {
-            vm.categorias = datos.data.data
+            var respuesta = datos.data;
+            if(respuesta.error){
+              user.swalError(respuesta.mensaje);
+            }else{
+              user.swalSuccess("Equipo Agregado Correctamente");
+            }
+
+            closeDialog();
           },
           function (error) {
             DialogFactory.ShowSimpleToast(error.error_description);

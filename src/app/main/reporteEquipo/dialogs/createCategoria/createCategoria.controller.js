@@ -18,23 +18,31 @@
         // Methods
         vm.editEvent = editEvent;
         vm.closeDialog = closeDialog;
-        vm.CargarTodasLasCategorias =CargarTodasLasCategorias;
+        vm.createCategoria =createCategoria;
 
         __init();
 
         function __init() {
-          CargarTodasLasCategorias();
+
         }
 
-       function CargarTodasLasCategorias () {
+       function createCategoria (categoria) {
 
-        var p = CategoriaEquiposService.getAllCategoriaEquipos();
+        var p = CategoriaEquiposService.createCategoriaEquipo(categoria);
         p.then(
           function (datos) {
-            vm.categorias = datos.data.data
+            var respuesta = datos.data;
+            if(respuesta.error){
+
+              user.swalError(respuesta.mensaje);
+            }else{
+
+              user.swalSuccess("Categoria creada correctamente");
+            }
+            closeDialog();
           },
           function (error) {
-            DialogFactory.ShowSimpleToast(error.error_description);
+
           }
         )
       }

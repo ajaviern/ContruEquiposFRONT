@@ -20,12 +20,11 @@
             });
         };
 
-        var createAlquilerInstitucion = function (getData) {
+        var facturar = function (id) {
             return $http({
-                method: 'POST',
-                url: url + '/api/alquilerInstitucion/create',
-                headers: {'authorization': 'bearer ' + user._getToken()},
-                data: getData
+                method: 'PUT',
+                url: url + '/api/Facturar/'+id,
+                data: {"hola":'prueba'}
             });
         };
 
@@ -79,7 +78,7 @@
         };
 
         equiposServiceFactory.createAlquiler = createAlquiler;
-        equiposServiceFactory.createAlquilerInstitucion = createAlquilerInstitucion;
+        equiposServiceFactory.facturar = facturar;
         equiposServiceFactory.getAlquileres = getAlquileres;
         equiposServiceFactory.getAlquileresUsuario = getAlquileresUsuario;
         equiposServiceFactory.getAlquileresInstitucion = getAlquileresInstitucion;

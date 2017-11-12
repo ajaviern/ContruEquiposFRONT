@@ -14,22 +14,26 @@
 
         <md-input-container class="md-block">
           <label>Nombre </label>
-          <input name="title" ng-model="vm.equipo.descripcion" required md-autofocus>
+          <input name="title" ng-model="vm.equipo.descripcion" required md-auto-focus>
         </md-input-container>
 
 
 
       <md-input-container class="md-block">
         <label>Modelo </label>
-        <input name="title" ng-model="vm.equipo.modelo" required md-autofocus>
+        <input name="title" ng-model="vm.equipo.modelo" required >
       </md-input-container>
 
 
       <md-input-container class="md-block">
         <label >Cantidad </label>
-        <input type="text" name="title" ng-model="vm.equipo.cantidad" required md-autofocus>
+        <input type="text" name="title" ng-model="vm.equipo.cantidad" required >
       </md-input-container>
 
+      <md-input-container class="md-block">
+        <label>Valor alquiler por día </label>
+        <input  type="text" name="title" ng-model="vm.equipo.valor" required >
+      </md-input-container>
 
 
       <md-input-container class="md-block">
@@ -41,18 +45,10 @@
         </md-select>
       </md-input-container>
 
-      <md-input-container class="md-block" >
-        <label> Estado</label>
-        <md-switch ng-model="vm.equipo.estado" aria-label="Switch 1">
-        </md-switch>
-      </md-input-container>
-
-
-
 
 
       <md-dialog-actions>
-        <md-button class="save-button md-accent md-raised">
+        <md-button class="save-button md-accent md-raised" ng-click="vm.createEquipo(vm.equipo)">
            Guardar
         </md-button>
 

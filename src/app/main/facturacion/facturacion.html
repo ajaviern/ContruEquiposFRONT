@@ -23,7 +23,6 @@
                             <div class="title">Cliente: {{vm.pedido.name}} {{vm.pedido.apellido}}</div>
                             <div ng-if="vm.pedido.cedula" class="address">Identificacion: {{vm.pedido.cedula}}</div>
                             <div ng-if="vm.pedido.telefono" class="phone">N° de telefono: {{vm.pedido.telefono}}</div>
-
                         </div>
                     </div>
 
@@ -45,10 +44,10 @@
             <div class="content">
                 <table class="simple invoice-table">
                     <thead>
-                        <th>Equipo</th>
-                        <th>Cantidad</th>
-                        <th class="text-right" >Fecha</th>
-                        <th class="text-right" >Subtotal</th>
+                        <th>EQUIPO</th>
+                        <th>CANTIDAD</th>
+                        <th class="text-right" >FECHA ENTREGA</th>
+                        <th class="text-right" >SUBTOTAL</th>
                     </thead>
                     <tbody>
                         <tr ng-repeat="service in vm.pedido.detalle">
@@ -97,8 +96,17 @@
                         tincidunt lacinia et eget eros.
                     </div>
                 </div>
+
+
             </div>
+          <br>
+          <br>
+          <br>
+          <md-button class="save-button md-accent md-raised" ng-click="vm.facturar(vm.pedido.id)">
+            PAGAR Y DESPACHAR
+          </md-button>
         </div>
+
         <!-- / INVOICE -->
 
         <!-- Use the following element to add breaks to your pages -->
