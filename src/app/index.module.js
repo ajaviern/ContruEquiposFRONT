@@ -25,21 +25,22 @@
             'app.login',
             'app.alquiler',
             'app.dialog',
-          // 'app.equipos',
+            'app.equipos',
             'app.producto',
             'app.registro',
-            //'app.registroDocentes',
-           // 'app.alquilerInstitucion',
-           // 'app.reporteDocentes',
+            'app.registroDocentes',
+            // 'app.alquilerInstitucion',
+            'app.reporteDocentes',
             'app.reporteEquipo',
             'app.reporteAlquileres',
             'app.reporteMisAlquileres',
             'app.facturacion',
-          //'app.reporteAlquileresUsuarios',
-          //  'app.reporteAlquileresInstitucion',
-          //  'app.reporteAlquileresHoy',
-            'app.reporteUsuarios'
-           // 'app.registroCliente'
+            'app.detallesIngreso',
+            //'app.reporteAlquileresUsuarios',
+            //  'app.reporteAlquileresInstitucion',
+            //  'app.reporteAlquileresHoy',
+            'app.reporteUsuarios',
+            'app.registroCliente'
 
 
 

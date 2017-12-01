@@ -6,7 +6,7 @@
         .controller('DetalleController', DetalleController);
 
     /** @ngInject */
-    function DetalleController($mdDialog, CategoriaEquiposService,parentController,alquiler)
+    function DetalleController($mdDialog, CategoriaEquiposService,parentController,alquiler,detallesIngresoService)
     {
         var vm = this;
 
@@ -19,6 +19,7 @@
         vm.editEvent = editEvent;
         vm.closeDialog = closeDialog;
         vm.CargarTodasLasCategorias =CargarTodasLasCategorias;
+        vm.IngresoEquipos=IngresoEquipos;
 
         __init();
 
@@ -58,6 +59,28 @@
         function editEvent(calendarEvent)
         {
             showEventFormDialog('edit', calendarEvent, false, false, event);
+        }
+
+        function IngresoEquipos(data) {
+            var datos = {};
+            datos.id_detalles_salidas = data.id;
+            datos.cantidad_ingreso = data.cantidad;
+            var promiseGet = detallesIngresoService.IngresoEquipos(datos);
+            promiseGet.then(
+                function (data) {
+                    var respuesta = data.data;
+                    if(!respuesta.error){ // si error es diferente de TRUE
+                        //vm.Alquileres = respuesta.datos;
+                        user.swalSuccess("Equipos Entregados A ConstruEquipos");
+                        parentController.getAlquileres();
+                        closeDialog();
+                    }
+                },
+                function (err) {
+                    console.log(JSON.stringify(err));
+                }
+            )
+
         }
     }
 })();

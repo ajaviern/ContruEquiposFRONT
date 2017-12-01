@@ -19,11 +19,18 @@
             });
         };
 
-        var getCategoriaEquipo = function (getData) {
+        var getCategorias = function () {
             return $http({
                 method: 'GET',
-                url: url + '/api/categoriaequipo',
-                data: getData
+                url: url + '/api/categoriaequipo'
+            });
+        };
+
+        var getCategoriaEquipo = function (id) {
+            return $http({
+                method: 'GET',
+                url: url + '/api/equipo/'+id,
+                data: id
             });
         };
 
@@ -53,6 +60,7 @@
 
         }
         CategoriaequiposServiceFactory.createCategoriaEquipo = createCategoriaEquipo;
+        CategoriaequiposServiceFactory.getCategorias = getCategorias;
         CategoriaequiposServiceFactory.getCategoriaEquipo = getCategoriaEquipo;
         CategoriaequiposServiceFactory.getAllCategoriaEquipos = getAllCategoriaEquipos;
         CategoriaequiposServiceFactory.EditCategoriaEquipos = EditCategoriaEquipos;

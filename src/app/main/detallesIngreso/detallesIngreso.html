@@ -1,0 +1,128 @@
+<div id="invoice" class="compact page-layout blank" layout="row" ms-scroll>
+    <div class="invoice-container">
+
+        <!-- INVOICE -->
+        <div class="card md-whiteframe-8dp">
+
+            <div class="header">
+                <div class="invoice-date">{{vm.invoice.date}}</div>
+
+                <div layout="row" layout-align="space-between stretch">
+                    <div class="client">
+                        <div class="invoice-number" layout="row" layout-align="start center">
+                            <span class="title" >Ingresar Equipos Alquilados</span>
+                            <span class="number"></span>
+                        </div>
+
+                        <div class="due-date" layout="row" layout-align="start center">
+                            <span class="title" >Fecha del pedido</span>
+                            <span class="date">{{vm.pedido.fecha}}</span>
+                        </div>
+
+                        <div class="info">
+                            <div class="title">Cliente: {{vm.pedido.name}} {{vm.pedido.apellido}}</div>
+                            <div ng-if="vm.pedido.cedula" class="address">Identificacion: {{vm.pedido.cedula}}</div>
+                            <div ng-if="vm.pedido.telefono" class="phone">N° de telefono: {{vm.pedido.telefono}}</div>
+                        </div>
+                    </div>
+
+                    <div class="issuer md-accent-bg" layout="row" layout-align="start center">
+                        <div class="logo" layout="row" layout-align="center center">
+                            <span>CE</span>
+                        </div>
+
+                        <div class="info">
+                            <div class="title">ConstruEquipos</div>
+                            <div class="address">Cra 5 # 45-34 Fundacion</div>
+                            <div  class="phone">Telefono de contacto: 3183890492 </div>
+                            <div  class="email">Email: construequipos@gmail.com</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="content">
+                <table class="simple invoice-table">
+                    <thead>
+                        <th>EQUIPO</th>
+                        <th>CANTIDAD</th>
+                        <th class="text-right" >FECHA ENTREGA</th>
+                        <th class="text-right" >SUBTOTAL</th>
+                        <th>
+                            <md-input-container class="md-block" md-no-float>
+                                <input name="telefono" ng-model="vm.credenciales.telefono" placeholder="Cantidad a Devolver"2required>
+                                <div ng-messages="registerForm.username.$error" role="alert">
+                                    <div ng-message="required">
+                                        <span>El campo Cantidad es necesario</span>
+                                    </div>
+                                </div>
+                            </md-input-container>
+                        </th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="service in vm.pedido.detalle">
+                            <td>
+                                <div class="title">
+                                    {{service.descripcion}}
+                                </div>
+                            </td>
+                            <td>
+                                {{service.cantidad}}
+                            </td>
+                            <td class="text-right">
+                                {{service.fecha }}
+                            </td>
+
+                            <td class="text-right">
+                                {{service.subtotal | currency}}
+                            </td>
+                        </tr>
+                        <
+                    </tbody>
+                </table>
+
+                <table class="simple invoice-table-footer">
+                    <tbody>
+
+                        <tr class="total">
+                            <td >TOTAL</td>
+                            <td>{{vm.pedido.total | currency}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="footer">
+                <div class="note" >Recuerde verificar las fechas de entrega</div>
+                <div layout="row" layout-align="start start">
+                    <div class="logo md-accent-bg" layout="row" layout-align="center center">
+                        <div>CE</div>
+                    </div>
+                    <div class="small-note">
+                        In condimentum malesuada efficitur. Mauris volutpat placerat auctor. Ut ac congue dolor. Quisque
+                        scelerisque lacus sed feugiat fermentum. Cras aliquet facilisis pellentesque. Nunc hendrerit
+                        quam at leo commodo, a suscipit tellus dapibus. Etiam at felis volutpat est mollis lacinia.
+                        Mauris placerat sem sit amet velit mollis, in porttitor ex finibus. Proin eu nibh id libero
+                        tincidunt lacinia et eget eros.
+                    </div>
+                </div>
+
+
+            </div>
+          <br>
+          <br>
+          <br>
+          <md-button class="save-button md-accent md-raised" ng-click="vm.facturar(vm.pedido.id)">
+            DEVOLVER
+          </md-button>
+        </div>
+
+        <!-- / INVOICE -->
+
+        <!-- Use the following element to add breaks to your pages -->
+        <!-- This will make sure that the section after this element will be printed on a new page -->
+        <div class="page-break"></div>
+
+    </div>
+</div>

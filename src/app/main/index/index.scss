@@ -1,106 +1,114 @@
-#register {
-    height: 100%;
-    background: url('/assets/images/backgrounds/fondoLogin.jpg') no-repeat;
-    background-size: cover;
 
-    #register-form-wrapper {
-        flex: 1 0 auto;
-        padding: 32px;
+.banner{
+  width: 1250px;
+  height: 450px;
+  //border:3px solid ;
+  margin:auto;
 
-        #register-form {
-            width: 384px;
-            max-width: 384px;
-            padding: 32px;
-            background: rgba(255, 255, 255, 0.90);
-            text-align: center;
+  background-size: 100% 100%;
 
-            .logo {
-                width: 128px;
-                height: 128px;
-                line-height: 128px;
-                font-size: 86px;
-                font-weight: 500;
-                margin: 32px auto;
-                color: #1213ff;
-                border-radius: 2px;
-                background: rgba(255, 255, 255, 0.60);
-            }
-
-            .title {
-                margin: 16px 0 32px 0;
-                font-size: 17px;
-            }
-
-            form {
-                width: 100%;
-                text-align: left;
-
-                md-checkbox {
-                    margin: 0;
-                }
-
-                .terms {
-                    font-size: 13px;
-                    margin: 16px 0 32px 0;
-
-                    a {
-                        margin-left: 4px;
-                    }
-                }
-
-                .submit-button {
-                    width: 220px;
-                    margin: 16px auto;
-                    display: block;
-                }
-            }
-
-            .login {
-                margin: 32px auto 24px auto;
-                width: 250px;
-                font-weight: 500;
-
-                .text {
-                    margin-right: 8px;
-                }
-
-                .link {
-
-                }
-            }
-        }
-    }
+  animation: banner 10s infinite;
+  animation-direction: alternate;
 }
 
-// RESPONSIVE
-@media screen and (max-width: $layout-breakpoint-xs) {
+@keyframes banner {
+  0%, 30%{
 
-    #register {
+      background-image: url("../../assets/images/img/img-4.jpg");
+    opacity: 1;
+  }
+  31%,34%{
+    opacity:0.1;
+  }
+  35%,65%{
+     background-image: url("../../assets/images/img/img-1.jpg");
+    //background-image: url("https://lh3.googleusercontent.com/-V3dnHaG_iEA/VZVTdhrn5iI/AAAAAAAAAFQ/bKDgvDdwnZUVFGmgoNXeo0CXrr2d8SEjwCHMYBhgL/h593/");
+  opacity: 1;
+  }
+  66%,69%{
+    opacity: 0.1;
+  }
+  70%,100%{
+    opacity: 1;
+      background-image: url("../../assets/images/img/img-3.JPG");
+    //background-image: url("https://lh3.googleusercontent.com/-WeGDflWLrpQ/VZVTdp1qwsI/AAAAAAAAAFQ/i09zu4slZW4UXUiNkNNrdVabVQPLdPKewCHMYBhgL/h593/");
+    
+  }
+}
 
-        #register-form-wrapper {
-            padding: 16px;
 
-            #register-form {
-                padding: 24px;
-                width: 100%;
 
-                form {
+.centrotabla
+{
 
-                    .md-button {
-                        width: 90%;
-                    }
-                }
-            }
-        }
-    }
+  background: rgba(255, 255, 255, 0.9);
+
+  padding: 10px 50px 20px 150px;
+  margin: auto;
+  width:650px;
+  height: auto;
 
 }
 
-#contenedor{
-    border-style: solid;
-    border-top-color: #CC0000;
-    border-right-color: blue;
-    border-bottom-color: #00FF00;
-    border-left-color: #CCC;
+.boton{
+  padding:5px 50px;
+  color: white;
+  font-size:1em;
+  background-color: #5dade2;
+  border:0px;
 
 }
+/***********************************************************************************************************************************************/
+
+* {
+  margin: 0;
+  padding: 0;
+}
+html,body {
+  height:100%;
+}
+/* Div que engloba el contenido de la página menos el footer */
+#wrapper {
+  min-height:100%;
+}
+header {
+  display:block;
+  background:#ccc;
+  padding:10px 0px;
+}
+section {
+  overflow: auto;
+  /* Definimos el padding inferior:
+     50px del pie de pagina mas 10px de separacion
+  */
+  padding-bottom: 60px;
+  /* Definimos un padding superior */
+  padding-top:30px;
+}
+
+
+footer {
+  position: relative;
+  /* Altura total del footer en px con valor negativo */
+  margin-top: 50px;
+  /* Altura del footer en px. Se han restado los 5px del margen
+     superior mas los 5px del margen inferior
+  */
+  height: 40px;
+  padding:5px 0px;
+  clear: both;
+  background: #286af0;
+  text-align: center;
+  color: #fff;
+}
+
+/* Esta clase define la anchura del contenido y la posicion centrada
+   El contenido queda centrado y limitado, pero la cabecera y el pie
+   llegan hasta los limites del navegador.
+*/
+.define {
+  width:960px;
+  margin:0 auto;
+}
+
+

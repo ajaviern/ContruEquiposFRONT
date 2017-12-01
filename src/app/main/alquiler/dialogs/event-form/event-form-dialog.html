@@ -39,26 +39,32 @@
 
           <div layout="row" layout-align="space-between" ng-repeat="item in vm.equiposSelecciones">
             <md-input-container class="md-block">
-              <label>Equipo </label>
-              <md-select ng-model="item.equipos_id" md-selected-text="">
+              <label>Categoria </label>
+              <md-select ng-model="item.categorias_id" md-selected-text="" ng-change="vm.getEquipos(item)">
                 <md-optgroup label="Seleccione el equipo">
-                  <md-option ng-value="item.id" ng-repeat="item in vm.equipos"> {{item.descripcion}}</md-option>
+                  <md-option ng-value="item.id" ng-repeat="item in vm.categorias"> {{item.categoria}}</md-option>
                 </md-optgroup>
               </md-select>
             </md-input-container>
             <md-input-container class="md-block">
+              <label>Equipo </label>
+              <md-select ng-model="item.equipos_id" md-selected-text="" >
+                <md-optgroup label="Seleccione el equipo">
+                  <md-option ng-value="equipo.id" ng-repeat="equipo in item.equipos"  > {{equipo.descripcion}}({{equipo.cantidad}})</md-option>
+                </md-optgroup>
+              </md-select>
+            </md-input-container>
+
+            <md-input-container class="md-block">
               <label>Cantidad </label>
-              <input name="title" ng-model="item.cantidad" required md-autofocus >
+              <input name="title" ng-model="item.cantidad" ng-blur="vm.validarCantidad(item)" required md-autofocus >
             </md-input-container>
             <md-input-container class="md-block">
-              <label>Fecha </label>
+              <label>Fecha fin</label>
               <input  type="date" name="title" ng-model="item.fecha" required md-autofocus >
             </md-input-container>
           </div>
         </div>
-
-
-
       </md-dialog-content>
 
 

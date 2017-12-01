@@ -15,6 +15,7 @@
        vm.usuario.nombre = user._getNombreCompleto();
        vm.usuario.telefono = user._getTelefono();
        vm.equipos = [];
+       vm.categorias = [];
 
         vm.equiposSelecciones = [];
 
@@ -31,7 +32,9 @@
 
         vm.nuevoEquipo =nuevoEquipo;
         vm.createPedido =createPedido;
-
+        vm.cargarTodosLasCategorias =cargarTodosLasCategorias;
+        vm.getEquipos=getEquipos;
+        vm.agregarInputExistencias=agregarInputExistencias;
        // console.log(closeDialog);
 
         /** CHIP **/
@@ -46,11 +49,86 @@
         vm.numberBuffer = '';
         vm.autocompleteDemoRequireMatch = true;
         vm.transformChip = transformChip;
+        vm.validarCantidad =validarCantidad;
 
 
+        function getEquipos(item) {
+            var p = CategoriaEquiposService.getCategoriaEquipo(item.categorias_id);
+            p.then(
+                function (datos) {
+                    item.equipos =datos.data;
+
+                },
+                function (error) {
+                    DialogFactory.ShowSimpleToast(error.error_description);
+                }
+            )
+
+        }
+
+        function cargarTodosLasCategorias() {
+            //alert('entro');
+            var p = CategoriaEquiposService.getCategorias();
+            p.then(
+                function (datos) {
+                    var respuesta =datos.data;
+                    if(respuesta.error){
+                        DialogFactory.ShowSimpleToast(respuesta.mensaje);
+                    }else{
+                        vm.categorias=respuesta.data;
+                    }
+                },
+                function (error) {
+                    DialogFactory.ShowSimpleToast(error.error_description);
+                }
+            )
+
+        }
+
+        function agregarInputExistencias(item) {
+            var equipo ;
+            for( var i in item.equipos){
+                if(item.equipos[i].id<item.equipos_id){
+                    equipo = item.equipos[i];
+                }
+            }
+            item.existencias=equipo.cantidad;
+        }
+
+        function validarCantidad(item) {
+              console.log(item);
+
+              var equipo ;
+            for( var i in item.equipos){
+                if(item.equipos[i].id==item.equipos_id){
+                   equipo = item.equipos[i];
+                }
+            }
+
+            if(equipo){
+                if(item.cantidad>equipo.cantidad){
+                    user.swalError('Solo disponemos de :'+equipo.cantidad);
+                    item.cantidad=0;
+                }
+
+            }else{
+                alert('no existe este equipo')
+            }
+
+        }
 
       function createPedido() {
         var datos = {};
+          var dates = {
+              start: moment.utc(vm.calendarEvent.start)
+             // end  : moment.utc(vm.calendarEvent.end)
+          };
+
+          dates.start.subtract(1, 'day');
+
+          datos.fecha =dates.start.format("YYYY/MM/DD");
+         // vm.alquiler.fechaFinal = dates.end;
+
         datos.detalle =vm.equiposSelecciones;
 
         for( var i in datos.detalle){
@@ -228,6 +306,7 @@
         function init()
         {
           cargarTodosLosEquipos();
+          cargarTodosLasCategorias();
           nuevoEquipo();
             // Figure out the title
             switch ( vm.dialogData.type )
@@ -283,6 +362,10 @@
                     notifications: []
                 };
             }
+
+
+
+
         }
 
         /**

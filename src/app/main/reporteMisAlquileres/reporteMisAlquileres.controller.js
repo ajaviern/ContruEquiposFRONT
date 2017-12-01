@@ -1,10 +1,3 @@
-/**
- * Created by Erley on 30/11/2016.
- */
-/**
- * Created by EspañaNet on 29/11/2016.
- */
-
 (function () {
     'use strict';
 
@@ -12,82 +5,60 @@
         .controller('ReporteMisAlquileresController', ReporteMisAlquileresController);
 
     /** @ngInject */
-    function ReporteMisAlquileresController($scope, DialogFactory, $timeout, $state, $mdDialog,AlquilerService,$document ) {
+    function ReporteMisAlquileresController(EquiposService, DialogFactory) {
         var vm = this;
-        vm.usuarios_id =user._getIdUsuario();
-        vm.credenciales = {};
-
-
-        vm.seleccionar = function (data) {
-            vm.select = data;
-        };
-
-        vm.getAlquileres=getAlquileres;
-        vm.modalCreateCategoria =modalCreateDetalle;
-
-        vm.Alquileres =[];
-        vm.Reporte = {};
+        vm.VentasCategoria=[];
 
 
 
-        __init();
+        vm.VentasporCategoria   = function () {
 
-        function __init() {
-          getAlquileres();
-        }
+            var p = EquiposService.getVentasPorCategoria();
+            p.then(
+                function (datos) {
 
-        function getAlquileres(){
-        //  console.log(vm.usuarios_id)
-            var promiseGet = AlquilerService.getAlquileresUsuario(vm.usuarios_id);
-            promiseGet.then(
-                function (data) {
-                    var respuesta = data.data;
-                    if(!respuesta.error){
-                        vm.Alquileres = respuesta.datos;
-                      //  console.log(vm.Alquileres);
+                    var respuesta =datos.data;
+
+                    if(respuesta.error){
+                        DialogFactory.ShowSimpleToast(respuesta.mensaje);
+                    }else{
+                        DialogFactory.ShowSimpleToast(respuesta.mensaje);
+                        vm.VentasCategoria=respuesta.data;
+
+                        vm.doughnutChart = {
+                            labels:vm.VentasCategoria.labels ,
+                            data  : vm.VentasCategoria.data
+                        };
+
+
                     }
                 },
-                function (err) {
-                    console.log(JSON.stringify(err));
+                function (error) {
+                    DialogFactory.ShowSimpleToast(error.error_description);
+
                 }
             )
-        }
+        };
 
+        vm.lineChart = {
+            labels: ['', '', '', '', '', '', ''],
+            series: ['Series A', 'Series B', 'Series C'],
+            data  : [
+                [65, 59, 80, 81, 56, 55, 40],
+                [45, 59, 50, 19, 100, 56, 30],
+                [28, 48, 40, 19, 86, 27, 90]
+            ]
+        };
 
+        vm.barChart = {
+            labels: ['2006', '2007', '2008', '2009', '2010', '2011', '2012'],
+            series: ['Series A', 'Series B'],
+            data  : [
+                [65, 59, 80, 81, 56, 55, 40],
+                [28, 48, 40, 19, 86, 27, 90]
+            ]
+        };
 
-      vm.dtOptions = {
-        dom       : '<"top"f>rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
-        pagingType: 'simple',
-        autoWidth : false,
-        responsive: true,
-        language: {
-          "sSearch": "Buscar",
-          "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ registros",
-          "sLengthMenu": "Mostrar _MENU_ registros",
-          "oPaginate": {
-            "sFirst": "Primero",
-            "sLast": "Último",
-            "sNext": "Siguiente",
-            "sPrevious": "Anterior"
-          }
-        }
-      };
-
-      function modalCreateDetalle(alquiler)
-      {
-        $mdDialog.show({
-          controller         : 'DetalleController',
-          controllerAs       : 'vm',
-          templateUrl        : 'app/main/reporteAlquileres/dialogs/createDetalle/Detalle.html',
-          parent             : angular.element($document.body),
-          clickOutsideToClose: true,
-          locals             : {
-            alquiler:alquiler,
-            parentController :vm
-          }
-        });
-      }
-
-
+        vm.VentasporCategoria();
     }
 })();

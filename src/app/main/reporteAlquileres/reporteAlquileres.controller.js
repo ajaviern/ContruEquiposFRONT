@@ -26,6 +26,7 @@
         vm.modalCreateCategoria =modalCreateDetalle;
         vm.goFacturacion=goFacturacion;
 
+
         vm.Alquileres =[];
         vm.Reporte = {};
 
@@ -41,6 +42,9 @@
           FacturacionService.setPedido(data);
           $state.go('app.facturacion', {});
         }
+
+
+
 
         function getAlquileres(){
         //  console.log(vm.usuarios_id)

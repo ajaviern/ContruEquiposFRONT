@@ -1,88 +1,48 @@
-<div id="forms" class="page-layout simple fullwidth doc-page" layout="column">
-  <!-- HEADER -->
-  <div class="header md-accent-bg" layout="row" layout-align="space-between" style="height: 100px; min-height: 100px; max-height: 100px;">
-    <div layout="column" layout-align="space-between">
-      <div class="title" > Alquileres<strong></strong> </div>
-    </div>
-    <!--
-    <div layout="row" layout-align="space-between">
-      <md-button class="md-raised md-primary" ng-href="{{googleUrl}}" ng-click="vm.modalCreateEquipo()" target="_blank">
-        <md-icon  md-font-icon="icon-plus"  class="s20" ></md-icon> Nuevo Equipo</md-button>
-      <md-button class="md-raised md-primary" ng-href="{{googleUrl}}" ng-click="vm.modalCreateCategoria()" target="_blank">
-        <md-icon  md-font-icon="icon-plus"  class="s20" ></md-icon> Nueva categoria</md-button>
-    </div>-->
-  </div>
-  <!-- / HEADER -->
-
-    <!-- BASIC FORM -->
-    <div class="form-wrapper md-whiteframe-1dp" >
-
-    </div>
-    <!-- / BASIC FORM -->
-
-    <div class="content" ng-cloak="">
-
-        <div>
-            <div  class="white-bg md-whiteframe-4dp">
-                  <table class="table table-responsive table-hover dataTable row-border hover" datatable="ng"
-                         dt-options="vm.dtOptions">
-                    <thead>
-                    <tr>
-                        <th class="secondary-text">
-                            <div class="table-header">
-                                <span class="column-title">Cedula</span>
-                            </div>
-                        </th>
-                        <th class="secondary-text">
-                            <div class="table-header">
-                                <span class="column-title">Nombre</span>
-                            </div>
-                        </th>
-                        <th class="secondary-text">
-                            <div class="table-header">
-                                <span class="column-title">Telefono</span>
-                            </div>
-                        </th>
-                        <th class="secondary-text">
-                            <div class="table-header">
-                                <span class="column-title">Fecha</span>
-                            </div>
-                        </th>
-                        <th class="secondary-text">
-                            <div class="table-header">
-                                <span class="column-title">Total</span>
-                            </div>
-                        </th>
-                        <th class="secondary-text">
-                            <div class="table-header">
-                                <span class="column-title">Estado</span>
-                            </div>
-                        </th>
-                      <th class="secondary-text">
-                        <div class="table-header">
-                          <span class="column-title">Opciones</span>
-                        </div>
-                      </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr ng-repeat="item in vm.Alquileres">
-                        <td>{{ item.cedula}}</td>
-                        <td>{{item.name + itrem.apellido }}</td>
-                        <td>{{item.telefono }}</td>
-                        <td>{{item.fecha }}</td>
-                        <td>{{item.total }}</td>
-                        <td>{{item.estado }}</td>
-                        <td>
-                          <md-button class="edit-button md-icon-button" ng-click="vm.modalCreateCategoria(item)" aria-label="Product details"
-                                       translate translate-attr-aria-label="EC.PRODUCT_DETAILS">
-                          <md-icon md-font-icon="icon-eye" class="s30"></md-icon>
-                        </md-button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+<div id="chartJs" class="page-layout simple fullwidth doc-page chart-doc-page">
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="center start">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <md-icon md-font-icon="icon-home" class="s16"></md-icon>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">REPORTES</span>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">ANALISIS DE VENTAS</span>
             </div>
+            <div class="title">Graficas</div>
         </div>
+
+        <div layout="row" layout-align="start center">
+            <md-button class="md-raised reference-button" ui-sref="app.index">
+                <md-icon md-font-icon="icon-link"></md-icon>
+                <span>Principal</span>
+            </md-button>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+
+
+
+    <div class="content">
+
+        <div class="md-title">Ventas por Categoria</div>
+        <div class="card md-whiteframe-4dp">
+            <canvas id="doughnut" class="chart chart-doughnut" chart-data="vm.doughnutChart.data"
+                    chart-labels="vm.doughnutChart.labels"></canvas>
+        </div>
+        <div class="md-title">Line Chart</div>
+        <div class="card md-whiteframe-4dp">
+            <canvas id="line" class="chart chart-line" chart-data="vm.lineChart.data"
+                    chart-labels="vm.lineChart.labels" chart-legend="true" chart-series="vm.lineChart.series">
+            </canvas>
+        </div>
+
+        <div class="md-title">Bar Chart</div>
+        <div class="card md-whiteframe-4dp">
+            <canvas id="bar" class="chart chart-bar" chart-data="vm.barChart.data"
+                    chart-labels="vm.barChart.labels"></canvas>
+        </div>
+
     </div>
 </div>

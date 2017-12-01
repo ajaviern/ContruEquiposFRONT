@@ -1,115 +1,50 @@
-<div id="forms" class="page-layout simple fullwidth doc-page" layout="column">
-
+<div id="nvd3" class="page-layout simple fullwidth doc-page chart-doc-page">
     <!-- HEADER -->
-    <div class="header md-accent-bg" layout="row" layout-align="space-between" style="height: 100px; min-height: 100px; max-height: 100px;">
-        <div layout="column" layout-align="space-between">
-            <div class="title" translate="REPORTEDOCENTES.TITLE">Consultar docentes</div>
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="center start">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <md-icon md-font-icon="icon-home" class="s16"></md-icon>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">REPORTES</span>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">ESTADISTICAS DE EQUIPOS</span>
+            </div>
+            <div class="title">Graficas</div>
+        </div>
+
+        <div layout="row" layout-align="start center">
+            <md-button class="md-raised reference-button" ui-sref="app.index">
+                <md-icon md-font-icon="icon-link"></md-icon>
+                <span>Principal</span>
+            </md-button>
         </div>
     </div>
     <!-- / HEADER -->
-
-    <!-- CONTENT -->
-    <div class="content" layout="column">
-
+    <!--CONTENT-->
+    <div class="content">
+        <div><h2>Equipos más alquilados</h2></div>
         <div class="md-title"></div>
-
-        <!--<div class="mv-24"></div> -->
-
-        <!-- BASIC FORM -->
-        <div class="form-wrapper md-whiteframe-1dp" flex="60">
-
-            <form name="basicForm" class="md-inline-form" novalidate>
-
-                <div class="form-title" translate="REPORTEDOCENTES.SUBTITLE">Buscar docente</div>
-                <div class="pb-16">
-                    A continuación busque los alquileres de servicios que tiene asignado cada profesor
-                </div>
-
-                <div layout="column" layout-gt-sm="row">
-                    <md-input-container flex>
-                        <label translate="REPORTEDOCENTES.DOCENTES">Docentes</label>
-                        <md-select ng-model="vm.Reporte.docenteId">
-                            <md-option ng-repeat="item in vm.Docentes" ng-value="item.docenteId">
-                                {{item.nombre}} {{item.apellidos}}
-                            </md-option>
-                        </md-select>
-                    </md-input-container>
-                </div>
-
-                <md-button type="submit" class="md-raised md-accent" aria-label="Submit"
-                           ng-click="vm.getAlquileres()"  ng-disabled="basicForm.$invalid || basicForm.$pristine" >
-                    Buscar
-                </md-button>
-            </form>
-
+        <div class="card md-whiteframe-4dp">
+            <nvd3 options="vm.pieChart.options" data="vm.pieChart.data"></nvd3>
         </div>
-        <!-- / BASIC FORM -->
-    </div>
-    <!-- / CONTENT -->
 
-    <div class="content" ng-cloak="">
+        <div><h2>Usuario con mas Alquileres</h2></div>
+        <div class="md-title"></div>
+        <div class="card md-whiteframe-4dp">
+            <nvd3 options="vm.pieChart2.options" data="vm.pieChart2.data"></nvd3>
+        </div>
 
-        <div>
-            <div  class="white-bg md-whiteframe-4dp">
-                <table class="dataTable row-border hover" datatable="ng" >
-                    <thead>
-                    <tr>
-                        <th class="secondary-text">
-                            <div class="table-header">
-                                <span class="column-title">Id</span>
-                            </div>
-                        </th>
-                        <th class="secondary-text">
-                            <div class="table-header">
-                                <span class="column-title">Salon</span>
-                            </div>
-                        </th>
-                        <th class="secondary-text">
-                            <div class="table-header">
-                                <span class="column-title">Docente</span>
-                            </div>
-                        </th>
+        <!--
+        <div class="md-title">Line Chart</div>
+        <div class="card md-whiteframe-4dp">
+            <chartist class="ct-chart ct-golden-section" chartist-data="vm.lineChart.data" chartist-chart-type="Line" chartist-chart-options="vm.lineChart.options"></chartist>
+        </div>
+        -->
 
-                        <th class="secondary-text">
-                            <div class="table-header">
-                                <span class="column-title">Fecha Inicial</span>
-                            </div>
-                        </th>
-                        <th class="secondary-text">
-                            <div class="table-header">
-                                <span class="column-title">Fecha Final</span>
-                            </div>
-                        </th>
-
-                        <th class="secondary-text">
-                            <div class="table-header">
-                                <span class="column-title">Institucion</span>
-                            </div>
-                        </th>
-
-                        <th class="secondary-text">
-                            <div class="table-header">
-                                <span class="column-title">Descripcion</span>
-                            </div>
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr ng-repeat="item in vm.Alquileres">
-                        <td>{{ item.alquilerInstitucionId}}</td>
-                        <td>{{item.salon }}</td>
-                        <td>{{item.nombreDocente }}</td>
-
-                        <td>{{item.fechaInicial }}</td>
-                        <td>{{item.fechaFinal }}</td>
-                        <td>{{item.institucion }}</td>
-
-                        <td>{{item.descripcion }}</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+        <div class="md-title">Dias en que mas se realizaron alquileres</div>
+        <div class="card md-whiteframe-4dp">
+            <nvd3 options="vm.donutChart.options" data="vm.donutChart.data"></nvd3>
         </div>
     </div>
-
+    <!--CONTENT-->
 </div>

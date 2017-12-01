@@ -9,7 +9,11 @@
 (function () {
     'use strict';
 
-    angular.module('app.reporteMisAlquileres', [])
+    angular.module('app.reporteMisAlquileres', [
+        // 3rd Party Dependencies
+        'chart.js'
+
+    ])
         .config(config);
 
     /** @ngInject */
@@ -27,7 +31,7 @@
                 },
                 data: {
                     permissions: {
-                        only: ['usuario']
+                        only: ['administrador','empleado']
                     }
                 }
             });
@@ -36,11 +40,18 @@
         $translatePartialLoaderProvider.addPart('app/main/reporteMisAlquileres');
 
         // Navigation
-        msNavigationServiceProvider.saveItem('reporteMisAlquileres', {
-            title    : 'Mis Alquileres',
+        msNavigationServiceProvider.saveItem('Reportes', {
+            title    : 'Reportes',
+            icon     : 'icon-pin',
+            weight   : 2
+        });
+
+        // Navigation
+        msNavigationServiceProvider.saveItem('Reportes.reporteMisAlquileres', {
+            title    : 'Analisis de Ventas',
             icon     : 'icon-pin',
             state    : 'app.reporteMisAlquileres',
-            weight   : 1
+            weight   : 2
         });
     }
 })();

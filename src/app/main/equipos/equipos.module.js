@@ -32,7 +32,7 @@
 
         // Navigation
         msNavigationServiceProvider.saveItem('equipos', {
-            title : 'Registro equipos',
+            title : 'Galeria',
             icon  : 'icon-laptop',
             state : 'app.equipos',
             weight: 3

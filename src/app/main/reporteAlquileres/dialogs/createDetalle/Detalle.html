@@ -12,6 +12,12 @@
 
     <md-dialog-content ms-scroll>
 
+      <tr ng-repeat="item in vm.Alquileres">
+        <td>{{ item.cedula}}</td>
+        <td>{{item.name + itrem.apellido }}</td>
+        <td>{{item.telefono }}</td>
+      </tr>
+
       <div class="container">
         <div layout="row" layout-align="space-between" ng-repeat="item in vm.detalles">
           <md-input-container class="md-block">
@@ -30,6 +36,10 @@
             <label>Subtotal </label>
             <input name="title" ng-model="item.subtotal" required md-autofocus disabled>
           </md-input-container>
+
+          <md-button  ng-if="item.estado==0" class="edit-button md-icon-button" ng-click="vm.IngresoEquipos(item)" text="Devolver Equipo">
+            <md-icon md-font-icon="icon-basket-fill" class="s30" style="color:#3c3c3c;"></md-icon>
+          </md-button>
         </div>
       </div>
 

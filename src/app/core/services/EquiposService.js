@@ -53,11 +53,44 @@
             });
 
         }
+
+        var getEquipoMasAlquilado = function () {
+            return $http({
+                method: 'GET',
+                url: url + '/api/EquiposmasAlquilados'
+            });
+        };
+
+        var getVentasPorCategoria = function () {
+            return $http({
+                method: 'GET',
+                url: url + '/api/AlquileresSeisMesesAntes'
+            });
+        };
+
+
+        var getAlquilerporPersonas = function () {
+            return $http({
+                method: 'GET',
+                url: url + '/api/AlquilerporPersonas'
+            });
+        }
+
+        var getEquipoMasAlquiladoPorMes = function () {
+            return $http({
+                method: 'GET',
+                url: url + '/api/EquiposmasAlquiladosPorMes'
+            });
+        };
+        equiposServiceFactory.getEquipoMasAlquilado=getEquipoMasAlquilado;
+        equiposServiceFactory.getEquipoMasAlquiladoPorMes=getEquipoMasAlquiladoPorMes;
         equiposServiceFactory.createEquipo = createEquipo;
         equiposServiceFactory.getEquipo = getEquipo;
         equiposServiceFactory.getAllEquipos = getAllEquipos;
         equiposServiceFactory.EditEquipos = EditEquipos;
         equiposServiceFactory.EliminarEquipos = EliminarEquipos;
+        equiposServiceFactory.getAlquilerporPersonas=getAlquilerporPersonas;
+        equiposServiceFactory.getVentasPorCategoria = getVentasPorCategoria;
 
         return equiposServiceFactory;
 

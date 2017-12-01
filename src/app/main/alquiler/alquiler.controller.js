@@ -240,63 +240,78 @@
                 end          : end
             };
 
-            $mdDialog.show({
-                controller         : 'EventFormDialogController',
-                controllerAs       : 'vm',
-                templateUrl        : 'app/main/alquiler/dialogs/event-form/event-form-dialog.html',
-                parent             : angular.element($document.body),
-                targetEvent        : e,
-                clickOutsideToClose: true,
-                locals             : {
-                    dialogData: dialogData
-                }
-            }).then(function (response)
-            {
-                switch ( response.type )
+
+            var hoy = moment();
+           // start=moment.utc(start);
+            //alert(start.format('YYYY MM DD'));
+            //alert(hoy.format('YYYY MM DD'));
+            if(start.format('YYYY MM DD')<hoy.format('YYYY MM DD')){
+
+                user.swalError("No puede realizar un Alquiler en una fecha anterior al dia de hoy...");
+                //$mdDialog.cancel();
+            }else{
+
+                $mdDialog.show({
+                    controller         : 'EventFormDialogController',
+                    controllerAs       : 'vm',
+                    templateUrl        : 'app/main/alquiler/dialogs/event-form/event-form-dialog.html',
+                    parent             : angular.element($document.body),
+                    targetEvent        : e,
+                    clickOutsideToClose: true,
+                    locals             : {
+                        dialogData: dialogData
+                    }
+                }).then(function (response)
                 {
-                    case 'add':
-                        // Add new
-                        vm.events[0].push({
-                            id   : vm.events[0].length + 20,
-                            title: response.calendarEvent.title,
-                            start: response.calendarEvent.start,
-                            end  : response.calendarEvent.end
-                        });
-                        break;
+                    switch ( response.type )
+                    {
+                        case 'add':
+                            // Add new
+                            vm.events[0].push({
+                                id   : vm.events[0].length + 20,
+                                title: response.calendarEvent.title,
+                                start: response.calendarEvent.start,
+                                end  : response.calendarEvent.end
+                            });
+                            break;
 
-                    case 'edit':
-                        // Edit
-                        for ( var i = 0; i < vm.events[0].length; i++ )
-                        {
-                            // Update
-                            if ( vm.events[0][i].id === response.calendarEvent.id )
+                        case 'edit':
+                            // Edit
+                            for ( var i = 0; i < vm.events[0].length; i++ )
                             {
-                                vm.events[0][i] = {
-                                    title: response.calendarEvent.title,
-                                    start: response.calendarEvent.start,
-                                    end  : response.calendarEvent.end
-                                };
+                                // Update
+                                if ( vm.events[0][i].id === response.calendarEvent.id )
+                                {
+                                    vm.events[0][i] = {
+                                        title: response.calendarEvent.title,
+                                        start: response.calendarEvent.start,
+                                        end  : response.calendarEvent.end
+                                    };
 
-                                break;
+                                    break;
+                                }
                             }
-                        }
-                        break;
+                            break;
 
-                    case 'remove':
-                        // Remove
-                        for ( var j = 0; j < vm.events[0].length; j++ )
-                        {
-                            // Update
-                            if ( vm.events[0][j].id === response.calendarEvent.id )
+                        case 'remove':
+                            // Remove
+                            for ( var j = 0; j < vm.events[0].length; j++ )
                             {
-                                vm.events[0].splice(j, 1);
+                                // Update
+                                if ( vm.events[0][j].id === response.calendarEvent.id )
+                                {
+                                    vm.events[0].splice(j, 1);
 
-                                break;
+                                    break;
+                                }
                             }
-                        }
-                        break;
-                }
-            });
+                            break;
+                    }
+                });
+
+            }
+
+
         }
     }
 

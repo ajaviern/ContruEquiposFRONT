@@ -51,7 +51,17 @@
           </th>
           <th class="secondary-text">
             <div class="table-header">
-              <span class="column-title">Unidades</span>
+              <span class="column-title">Inventario</span>
+            </div>
+          </th>
+          <th class="secondary-text">
+            <div class="table-header">
+              <span class="column-title">Disponibles </span>
+            </div>
+          </th>
+          <th class="secondary-text">
+            <div class="table-header">
+              <span class="column-title">Alquilado</span>
             </div>
           </th>
           <th class="secondary-text">
@@ -62,6 +72,11 @@
           <th class="secondary-text">
             <div class="table-header">
               <span class="column-title">Categoria</span>
+            </div>
+          </th>
+          <th class="secondary-text">
+            <div class="table-header">
+              <span class="column-title">Valor x Dia</span>
             </div>
           </th>
           <th class="secondary-text">
@@ -80,12 +95,15 @@
         <tr ng-repeat="product in vm.products">
           <td>{{product.id}}</td>
           <td>{{product.descripcion}}</td>
+          <th>{{ product.totalExistencias| number}}</th>
           <th>{{product.cantidad | number}}</th>
+          <th>{{product.totalExistencias-product.cantidad }}</th>
           <td>{{product.modelo}}</td>
           <td>{{product.nombrecategoria}}</td>
+          <td>{{product.valor}}</td>
           <td>
-              <md-icon  ng-if="product.estado == 'Activo' " md-font-icon="icon-check-circle"  class="s30" style="color:green;"></md-icon>
-              <md-icon  ng-if="product.estado == Inactivo " md-font-icon="icon-cancel" class="s30" style="color:red;" ></md-icon>
+              <md-icon  ng-if="product.cantidad >1 " md-font-icon="icon-check-circle"  class="s30" style="color:green;"></md-icon>
+              <md-icon  ng-if="product.cantidad <1 " md-font-icon="icon-cancel" class="s30" style="color:red;" ></md-icon>
           </td>
           <td>
             <md-button class="edit-button md-icon-button" ng-click="vm.showEventDetailDialog(product)" aria-label="Product details"

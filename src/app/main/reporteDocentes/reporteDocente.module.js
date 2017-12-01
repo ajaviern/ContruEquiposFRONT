@@ -5,7 +5,10 @@
 (function () {
     'use strict';
 
-    angular.module('app.reporteDocentes', [])
+    angular.module('app.reporteDocentes', [
+        // 3rd Party Dependencies
+        'nvd3'
+    ])
         .config(config);
 
     /** @ngInject */
@@ -23,7 +26,7 @@
                 },
                 data: {
                     permissions: {
-                        only: ['Institucion']
+                        only: ['administrador','empleado']
                     }
                 }
             });
@@ -32,8 +35,8 @@
         $translatePartialLoaderProvider.addPart('app/main/reporteDocentes');
 
         // Navigation
-        msNavigationServiceProvider.saveItem('reporteDocentes', {
-            title    : 'Consulta de Docentes',
+        msNavigationServiceProvider.saveItem('Reportes.reporteDocentes', {
+            title    : 'Estadisticas de Equipos',
             icon     : 'icon-file-find',
             state    : 'app.reporteDocentes',
             weight   : 1

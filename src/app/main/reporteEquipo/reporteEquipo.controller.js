@@ -100,7 +100,6 @@
           }
         });
       }
-
       function modalCreateCategoria()
       {
         $mdDialog.show({
